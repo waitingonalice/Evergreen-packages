@@ -23,7 +23,8 @@
     "publish": "npm publish ./build",
     "storybook": "storybook dev -p 8000",
     "build:tailwind": "tailwindcss -i ./src/styles/tailwind.css -o ./src/styles/tailwind.output.css",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "typecheck": "tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
     "clsx": "^2.0.0"
