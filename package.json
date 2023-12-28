@@ -15,7 +15,7 @@
     "login": "",
     "version:patch": "lerna version patch --yes",
     "build": "lerna run build",
-    "publish:all": "lerna publish --no-private --y --ignore-prepublish"
+    "publish:all": "lerna publish --no-private from-git --y --ignore-prepublish"
   },
   "repository": {
     "type": "git",
