@@ -1,6 +1,6 @@
 {
   "name": "@waitingonalice/design-system",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "waitingonalice",
   "description": "Evergreen design system",
   "license": "MIT",
@@ -15,10 +15,10 @@
   "repository": "https://github.com/waitingonalice/Evergreen-packages/tree/main/design-system",
   "scripts": {
     "build": "yarn compile && yarn post:build",
-    "post:build": "node ./scripts/generatePackage.js",
     "compile": "rm -rf ./build && rollup -c --bundleConfigAsCjs",
+    "post:build": "node ./scripts/generatePackage.js",
     "version:patch": "yarn version --patch",
-    "publish": "npm publish ./build",
+    "publish": "yarn npm publish ./build",
     "dev": "storybook dev -p 8000",
     "build-storybook": "storybook build",
     "typecheck": "tsc --noEmit --skipLibCheck"
