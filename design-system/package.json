@@ -18,8 +18,6 @@
     "build": "yarn compile && yarn post:build",
     "compile": "rm -rf ./build && rollup -c --bundleConfigAsCjs",
     "post:build": "node ./scripts/generatePackage.js",
-    "version:patch": "yarn version --patch",
-    "publish": "npm run publish ./build",
     "build-storybook": "storybook build",
     "typecheck": "tsc --noEmit --skipLibCheck"
   },
