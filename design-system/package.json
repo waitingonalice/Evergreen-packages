@@ -1,0 +1,62 @@
+{
+  "name": "@ever-green/design-system",
+  "version": "1.0.3",
+  "author": "waitingonalice",
+  "description": "Evergreen design system",
+  "license": "MIT",
+  "main": "build/cjs/index.js",
+  "module": "build/index.js",
+  "types": "build/index.d.ts",
+  "private": false,
+  "files": [
+    "build"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "registry": "https://registry.npmjs.org",
+  "repository": "https://github.com/waitingonalice/Expense-tracker",
+  "scripts": {
+    "build": "yarn rollup && yarn post:build",
+    "post:build": "node ./scripts/generatePackage.js",
+    "rollup": "rm -rf ./build && rollup -c --bundleConfigAsCjs",
+    "publish": "npm publish ./build",
+    "storybook": "storybook dev -p 8000",
+    "build:tailwind": "tailwindcss -i ./src/styles/tailwind.css -o ./src/styles/tailwind.output.css",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "clsx": "^2.0.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@storybook/addon-essentials": "^7.6.6",
+    "@storybook/addon-interactions": "^7.6.6",
+    "@storybook/addon-links": "^7.6.6",
+    "@storybook/addon-onboarding": "^1.0.10",
+    "@storybook/blocks": "^7.6.6",
+    "@storybook/react": "^7.6.6",
+    "@storybook/react-vite": "^7.6.6",
+    "@storybook/test": "^7.6.6",
+    "@tailwindcss/forms": "^0.5.7",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "prop-types": "^15.8.1",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-generate-package-json": "^3.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "storybook": "^7.6.6",
+    "tailwindcss": "^3.4.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
