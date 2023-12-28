@@ -1,8 +1,5 @@
 node_modules
 .DS_Store
-coverage
-.env
-.env.db
 nx-cloud.env
 
 logs
@@ -20,6 +17,10 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 build
-.next
-out
-tailwind.output.css
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
