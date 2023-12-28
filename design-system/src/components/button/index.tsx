@@ -59,7 +59,6 @@ export const Button = ({
     errorLink:
       "text-errorMain hover:text-errorSecondary active:enabled:text-errorTertiary",
   };
-
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (onClick) {
       onClick(e);
