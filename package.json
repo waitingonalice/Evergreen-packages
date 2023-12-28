@@ -13,11 +13,11 @@
     "commit": "git-cz",
     "prepare": "husky install",
     "login": "",
-    "version:minor": "lerna version minor --yes",
     "version:patch": "lerna version patch --yes",
+    "version:minor": "lerna version minor --yes",
     "version:major": "lerna version major --yes",
     "build": "lerna run build",
-    "publish:all": "lerna publish --no-private --yes --ignore-prepublish --contents build"
+    "publish:all": "lerna publish --no-private --yes from-git --ignore-prepublish --contents build"
   },
   "repository": {
     "type": "git",
