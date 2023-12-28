@@ -65,7 +65,6 @@ export const Button = ({
       onClick(e);
     }
   };
-
   return (
     <button
       id={id}
