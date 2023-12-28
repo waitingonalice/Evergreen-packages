@@ -1,7 +1,4 @@
 {
   "npmClient": "yarn",
-  "publish": {
-    "directory": "{workspaceRoot}/build"
-  },
   "version": "independent"
 }
