@@ -14,12 +14,12 @@
   "registry": "https://registry.npmjs.org",
   "repository": "https://github.com/waitingonalice/Evergreen-packages/tree/main/design-system",
   "scripts": {
+    "dev": "storybook dev -p 8000",
     "build": "yarn compile && yarn post:build",
     "compile": "rm -rf ./build && rollup -c --bundleConfigAsCjs",
     "post:build": "node ./scripts/generatePackage.js",
     "version:patch": "yarn version --patch",
-    "publish": "npm publish ./build",
-    "dev": "storybook dev -p 8000",
+    "publish": "npm run publish ./build",
     "build-storybook": "storybook build",
     "typecheck": "tsc --noEmit --skipLibCheck"
   },
@@ -43,6 +43,8 @@
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.32",
     "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-dts": "^6.1.0",
     "rollup-plugin-generate-package-json": "^3.2.0",

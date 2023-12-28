@@ -13,9 +13,9 @@
     "commit": "git-cz",
     "prepare": "husky install",
     "login": "",
+    "version:patch": "lerna version patch --yes",
     "build": "lerna run build",
-    "version": "",
-    "publish": ""
+    "publish": "lerna publish --no-private"
   },
   "repository": {
     "type": "git",
@@ -63,5 +63,8 @@
       "eslint ./**/*.{ts,tsx}",
       "prettier --write --ignore-unknown"
     ]
-  }
+  },
+  "workspaces": [
+    "design-system"
+  ]
 }
