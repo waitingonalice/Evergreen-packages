@@ -1,6 +1,6 @@
 {
-  "name": "@ever-green/design-system",
-  "version": "1.0.3",
+  "name": "@ever-green/ui",
+  "version": "1.2.5",
   "author": "waitingonalice",
   "description": "Evergreen design system",
   "license": "MIT",
@@ -8,21 +8,17 @@
   "module": "build/index.js",
   "types": "build/index.d.ts",
   "private": false,
-  "files": [
-    "build"
-  ],
   "publishConfig": {
     "access": "public"
   },
   "registry": "https://registry.npmjs.org",
-  "repository": "https://github.com/waitingonalice/Expense-tracker",
+  "repository": "https://github.com/waitingonalice/Evergreen-packages/tree/main/design-system",
   "scripts": {
     "build": "yarn rollup && yarn post:build",
     "post:build": "node ./scripts/generatePackage.js",
     "rollup": "rm -rf ./build && rollup -c --bundleConfigAsCjs",
     "publish": "npm publish ./build",
-    "storybook": "storybook dev -p 8000",
-    "build:tailwind": "tailwindcss -i ./src/styles/tailwind.css -o ./src/styles/tailwind.output.css",
+    "dev": "storybook dev -p 8000",
     "build-storybook": "storybook build",
     "typecheck": "tsc --noEmit --skipLibCheck"
   },

@@ -3,13 +3,21 @@ import resolve from "@rollup/plugin-node-resolve";
 import copy from "rollup-plugin-copy";
 import generatePackageJson from "rollup-plugin-generate-package-json";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
-// import postcss from "rollup-plugin-postcss";
+import postcss from "rollup-plugin-postcss";
 import { terser } from "rollup-plugin-terser";
 import typescript from "rollup-plugin-typescript2";
-import { getFolders } from "./scripts/getFolder";
+import { getFolders } from "./scripts/getFolder.js";
 
 const packageJson = require("./package.json");
+
 const plugins = [
+  postcss({
+    config: {
+      path: "./postcss.config.cjs",
+      minimize: true,
+      modules: false,
+    },
+  }),
   peerDepsExternal(),
   resolve(),
   commonjs(),
@@ -18,40 +26,43 @@ const plugins = [
     tsconfig: "tsconfig.json",
     useTsconfigDeclarationDir: true,
   }),
-];
-
-const subfolderPlugins = (folderName) => [
-  ...plugins,
-  generatePackageJson({
-    baseContents: {
-      name: `${packageJson.name}-${folderName}`,
-      version: packageJson.version,
-      private: false,
-      publishConfig: {
-        access: "public",
-      },
-      main: "../cjs/index.js", // --> points to cjs format entry point of whole library
-      module: "./index.js", // --> points to esm format entry point of individual component
-      types: "./index.d.ts", // --> points to types definition file of individual component
-    },
+  copy({
+    targets: [{ src: "./tailwind.config.js", dest: "./build" }],
   }),
 ];
-
-const folderBuilds = getFolders("./src/components").map((folder) => {
-  return {
-    input: `src/components/${folder}/index.tsx`,
-    output: [
-      {
-        file: `build/${folder}/index.js`,
-        sourcemap: true,
-        exports: "named",
-        format: "esm",
+const subPackageConfig = (type, name) => ({
+  input: `src/${type}/${name}/index.tsx`,
+  output: [
+    {
+      file: `build/${type}/${name}/index.js`,
+      sourcemap: true,
+      exports: "named",
+      format: "esm",
+    },
+    {
+      file: `build/${type}/${name}/index.cjs`,
+      sourcemap: true,
+      exports: "named",
+      format: "cjs",
+    },
+  ],
+  plugins: [
+    ...plugins,
+    generatePackageJson({
+      baseContents: {
+        name: `${name}`,
+        main: "./index.cjs", // --> points to cjs format entry point of whole library
+        module: "./index.js", // --> points to esm format entry point of individual component
+        types: `./index.d.ts`, // --> points to types definition file of individual component
       },
-    ],
-    plugins: subfolderPlugins(folder),
-    external: ["react", "react-dom"],
-  };
+    }),
+  ],
+  external: ["react", "react-dom"],
 });
+
+const componentPackages = getFolders("./src/components").map((name) =>
+  subPackageConfig("components", name)
+);
 
 export default [
   {
@@ -61,25 +72,11 @@ export default [
         file: packageJson.module,
         format: "esm",
         sourcemap: true,
-        exports: "named",
       },
     ],
-    plugins: [
-      ...plugins,
-      copy({
-        targets: [{ src: "./tailwind.config.js", dest: "./build" }],
-      }),
-      // postcss({
-      //   config: {
-      //     path: "./postcss.config.cjs",
-      //     minimize: true,
-      //     modules: false,
-      //   },
-      // }),
-    ],
+    plugins,
     external: ["react", "react-dom"],
   },
-  ...folderBuilds,
   {
     input: "src/index.ts",
     output: [
@@ -87,10 +84,10 @@ export default [
         file: packageJson.main,
         format: "cjs",
         sourcemap: true,
-        exports: "named",
       },
     ],
-    external: ["react", "react-dom"],
     plugins,
+    external: ["react", "react-dom"],
   },
+  ...componentPackages,
 ];
