@@ -2,7 +2,7 @@
   "name": "@waitingonalice/design-system",
   "version": "1.1.6",
   "author": "waitingonalice",
-  "description": "Evergreen design system",
+  "description": "A design system that uses tailwindcss and react",
   "license": "MIT",
   "main": "build/cjs/index.js",
   "module": "build/index.js",
@@ -17,6 +17,7 @@
     "tailwindcss",
     "shadcn-ui"
   ],
+  "homepage": "https://github.com/waitingonalice/Evergreen-packages/tree/main/design-system#readme",
   "registry": "https://registry.npmjs.org",
   "repository": "https://github.com/waitingonalice/Evergreen-packages/tree/main/design-system",
   "scripts": {
