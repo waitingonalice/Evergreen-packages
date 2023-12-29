@@ -16,7 +16,7 @@
     "version:patch": "lerna version patch --yes -m \"chore(release): publish patch %s\"",
     "version:minor": "lerna version minor --yes -m \"chore(release): publish minor %s\"",
     "version:major": "lerna version major --yes -m \"chore(release): publish major %s\"",
-    "build:all": "lerna run build --since",
+    "build:all": "lerna run build",
     "publish:all": "lerna publish --no-private --yes from-package --ignore-prepublish --contents build"
   },
   "repository": {
