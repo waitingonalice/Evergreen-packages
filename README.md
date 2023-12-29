@@ -49,8 +49,9 @@ All commands should be run from the root level of the package.
 You should commit all changes to the package before publishing.
 The order of scripts to be run should be as follows:
 
-1. `yarn version:patch` - This will bump the version of the package
-2. `yarn build:all` - This will build the package
-3. `yarn publish:all` - This will publish the package to NPM
+1. `git pull` - This will pull the latest changes from the remote repository
+2. `yarn version:patch` - This will bump the version of the package
+3. `yarn build:all` - This will build the package
+4. `yarn publish:all` - This will publish the package to NPM
 
 Alternatively, when pushing to the `main` branch, a GitHub action will run the above scripts automatically.
