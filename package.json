@@ -5,10 +5,10 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "dev": "lerna run dev",
+    "dev": "nx run-many -t dev",
     "lint": "run-p lint:*",
     "lint:design-system": "eslint ./design-system --cache --cache-location ./node_modules/.cache/eslint",
-    "typecheck": "lerna run typecheck",
+    "typecheck": "nx run-many -t typecheck",
     "prettier:write": "prettier . --write",
     "commit": "git-cz",
     "prepare": "husky install",
@@ -16,7 +16,7 @@
     "version:patch": "lerna version patch --yes",
     "version:minor": "lerna version minor --yes",
     "version:major": "lerna version major --yes",
-    "build": "lerna run build",
+    "build:all": "nx run-many -t build",
     "publish:all": "lerna publish --no-private --yes from-package --ignore-prepublish --contents build"
   },
   "repository": {
@@ -52,6 +52,7 @@
     "lerna": "^7.3.0",
     "lint-staged": "^13.1.0",
     "npm-run-all": "^4.1.5",
+    "nx": "^17.2.8",
     "prettier-plugin-sort-json": "^1.0.0",
     "prettier-plugin-tailwindcss": "^0.2.1"
   },

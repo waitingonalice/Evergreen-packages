@@ -15,9 +15,9 @@
   "repository": "https://github.com/waitingonalice/Evergreen-packages/tree/main/design-system",
   "scripts": {
     "dev": "storybook dev -p 8000",
-    "build": "yarn compile && yarn post:build",
+    "build": "yarn compile && yarn post:compile",
     "compile": "rm -rf ./build && rollup -c --bundleConfigAsCjs",
-    "post:build": "node ./scripts/generatePackage.js",
+    "post:compile": "node ./scripts/generatePackage.js",
     "build-storybook": "storybook build",
     "typecheck": "tsc --noEmit --skipLibCheck"
   },
