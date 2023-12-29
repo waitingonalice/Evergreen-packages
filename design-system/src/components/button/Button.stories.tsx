@@ -3,7 +3,7 @@ import React from "react";
 import { Button, ButtonProps } from ".";
 
 const meta: Meta<typeof Button> = {
-  title: "Components/Atoms/Button",
+  title: "Components/Button",
   component: Button,
 };
 export default meta;
