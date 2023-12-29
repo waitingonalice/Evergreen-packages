@@ -24,4 +24,4 @@ build
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
-.nx
+.nx/cache

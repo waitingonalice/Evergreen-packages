@@ -19,13 +19,13 @@ jobs:
         run: |
           git config --global user.name "waitingonalice"
           git config --global user.email "fcsie55@gmail.com"
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile --production=false
-      - name: Version bump patch
-        run: yarn version:patch
-      - name: Build
-        run: yarn build:all
-      - name: Publish
-        run: yarn publish:all
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # - name: Install dependencies
+      #   run: yarn install --frozen-lockfile --production=false
+      # - name: Version bump patch
+      #   run: yarn version:patch
+      # - name: Build
+      #   run: yarn build:all
+      # - name: Publish
+      #   run: yarn publish:all
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
