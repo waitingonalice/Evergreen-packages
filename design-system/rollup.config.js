@@ -6,7 +6,7 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
 import { terser } from "rollup-plugin-terser";
 import typescript from "rollup-plugin-typescript2";
-import { getFolders } from "./scripts/getFolder.js";
+import { getFolders } from "./scripts/getFolders.js";
 
 const packageJson = require("./package.json");
 
@@ -30,8 +30,9 @@ const plugins = [
     targets: [{ src: "./tailwind.config.js", dest: "./build" }],
   }),
 ];
-const subPackageConfig = (type, name) => ({
-  input: `src/${type}/${name}/index.tsx`,
+
+const subPackagesConfig = (type, name) => ({
+  input: `src/${type}/${name}/index.${type === "components" ? "tsx" : "ts"}`,
   output: [
     {
       file: `build/${type}/${name}/index.js`,
@@ -61,7 +62,14 @@ const subPackageConfig = (type, name) => ({
 });
 
 const componentPackages = getFolders("./src/components").map((name) =>
-  subPackageConfig("components", name)
+  subPackagesConfig("components", name)
+);
+
+const hookPackages = getFolders("./src/hooks").map((name) =>
+  subPackagesConfig("hooks", name)
+);
+const utilPackages = getFolders("./src/utils").map((name) =>
+  subPackagesConfig("utils", name)
 );
 
 export default [
@@ -90,4 +98,6 @@ export default [
     external: ["react", "react-dom"],
   },
   ...componentPackages,
+  ...utilPackages,
+  ...hookPackages,
 ];

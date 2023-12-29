@@ -43,7 +43,7 @@ npm install @waitingonalice/design-system
 import { Button } from '@waitingonalice/design-system';
 ```
 
-- Additionally, you may split the components into smaller bundles to reduce the bundle size of your project. For example, if you only need the Button component, you can import it like this:
+Alternatively, you may split the components into smaller bundles to reduce the bundle size of your project. For example, if you only need the Button component, you can import it like this:
 
 ```
 import { Button } from '@waitingonalice/design-system/components/button';
