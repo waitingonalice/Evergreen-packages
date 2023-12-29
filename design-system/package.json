@@ -11,6 +11,13 @@
   "publishConfig": {
     "access": "public"
   },
+  "keywords": [
+    "component library",
+    "react",
+    "typescript",
+    "tailwindcss",
+    "shadcn"
+  ],
   "registry": "https://registry.npmjs.org",
   "repository": "https://github.com/waitingonalice/Evergreen-packages/tree/main/design-system",
   "scripts": {

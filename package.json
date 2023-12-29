@@ -19,19 +19,11 @@
     "build:all": "lerna run build",
     "publish:all": "lerna publish --no-private --yes from-package --ignore-prepublish --contents build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/waitingonalice/Evergreen-packages.git"
-  },
   "keywords": [
     "Monorepo"
   ],
   "author": "waitingonalice",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/waitingonalice/Evergreen-packages/issues"
-  },
-  "homepage": "https://github.com/waitingonalice/Evergreen-packages#readme",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
