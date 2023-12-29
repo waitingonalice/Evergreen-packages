@@ -32,10 +32,7 @@ const plugins = [
 ];
 
 const subPackagesConfig = (type, name) => ({
-  input:
-    type === "components"
-      ? `src/${type}/${name}/index.tsx`
-      : `src/${type}/${name}/index.ts`,
+  input: `src/${type}/${name}/index.${type === "components" ? "tsx" : "ts"}`,
   output: [
     {
       file: `build/${type}/${name}/index.js`,
