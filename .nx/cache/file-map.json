@@ -30,16 +30,12 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": ".github/workflows/lint.yml",
-        "hash": "4174180711047903131"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "15017332655017553574"
-      },
-      {
         "file": "yarn.lock",
         "hash": "18404061366133963665"
+      },
+      {
+        "file": "nx.json",
+        "hash": "9701877776419689541"
       },
       {
         "file": ".eslintignore",
@@ -50,12 +46,20 @@
         "hash": "7396953044668647134"
       },
       {
-        "file": "nx.json",
-        "hash": "9701877776419689541"
+        "file": ".github/workflows/publish.yml",
+        "hash": "711514718792235479"
+      },
+      {
+        "file": ".github/workflows/lint.yml",
+        "hash": "4174180711047903131"
       },
       {
         "file": "package.json",
         "hash": "15097068689231177672"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "15017332655017553574"
       },
       {
         "file": "lerna.json",
@@ -64,10 +68,6 @@
       {
         "file": ".eslintrc.js",
         "hash": "14953800338292011843"
-      },
-      {
-        "file": ".github/workflows/publish.yml",
-        "hash": "16767759709196562309"
       }
     ],
     "projectFileMap": {
