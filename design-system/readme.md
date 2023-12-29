@@ -21,7 +21,7 @@ module.exports = {
 
 This approach allows you to merge configurations from baseConfig with your own tailwind.config.js file, ensuring consistency in Tailwind CSS configurations across projects.
 
-### Using the Design System
+## Using the Design System
 
 1. Install the package
 
