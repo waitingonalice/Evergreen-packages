@@ -77,7 +77,6 @@ export default [
       {
         file: packageJson.module,
         format: "esm",
-        sourcemap: true,
       },
     ],
     plugins,
@@ -89,7 +88,6 @@ export default [
       {
         file: packageJson.main,
         format: "cjs",
-        sourcemap: true,
       },
     ],
     plugins,
