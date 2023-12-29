@@ -20,7 +20,7 @@ jobs:
       - name: Version bump patch
         run: yarn version:patch
       - name: Build
-        run: yarn build
+        run: yarn build:all
       - name: publish
         run: yarn publish:all
         env:
