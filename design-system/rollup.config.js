@@ -36,13 +36,11 @@ const subPackagesConfig = (type, name) => ({
   output: [
     {
       file: `build/${type}/${name}/index.js`,
-      sourcemap: true,
       exports: "named",
       format: "esm",
     },
     {
       file: `build/${type}/${name}/index.cjs`,
-      sourcemap: true,
       exports: "named",
       format: "cjs",
     },
@@ -68,9 +66,9 @@ const componentPackages = getFolders("./src/components").map((name) =>
 const hookPackages = getFolders("./src/hooks").map((name) =>
   subPackagesConfig("hooks", name)
 );
-const utilPackages = getFolders("./src/utils").map((name) =>
-  subPackagesConfig("utils", name)
-);
+const utilPackages = getFolders("./src/utils")
+  .filter((name) => name !== "storybook")
+  .map((name) => subPackagesConfig("utils", name));
 
 export default [
   {
