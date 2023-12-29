@@ -1,0 +1,21 @@
+{
+  "run": {
+    "command": "nx run-many -t build",
+    "startTime": "2023-12-29T06:16:05.133Z",
+    "endTime": "2023-12-29T06:16:08.386Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "@waitingonalice/design-system:build",
+      "target": "build",
+      "projectName": "@waitingonalice/design-system",
+      "hash": "2425689097955429638",
+      "startTime": "2023-12-29T06:16:05.138Z",
+      "endTime": "2023-12-29T06:16:08.385Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    }
+  ]
+}

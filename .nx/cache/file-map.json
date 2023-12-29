@@ -1,0 +1,181 @@
+{
+  "version": "6.0",
+  "nxVersion": "17.2.8",
+  "deps": {
+    "@trivago/prettier-plugin-sort-imports": "^4.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.47.1",
+    "@typescript-eslint/parser": "^5.47.1",
+    "commitizen": "^4.3.0",
+    "eslint": "^8.39.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.31.11",
+    "husky": "^8.0.3",
+    "lerna": "^7.3.0",
+    "lint-staged": "^13.1.0",
+    "npm-run-all": "^4.1.5",
+    "nx": "^17.2.8",
+    "prettier-plugin-sort-json": "^1.0.0",
+    "prettier-plugin-tailwindcss": "^0.2.1"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "pluginsConfig": {
+    "@nx/js": {
+      "analyzeSourceFiles": false
+    }
+  },
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": ".github/workflows/lint.yml",
+        "hash": "4174180711047903131"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "15017332655017553574"
+      },
+      {
+        "file": "yarn.lock",
+        "hash": "18404061366133963665"
+      },
+      {
+        "file": ".eslintignore",
+        "hash": "9571704361004545777"
+      },
+      {
+        "file": "prettier.config.js",
+        "hash": "7396953044668647134"
+      },
+      {
+        "file": "nx.json",
+        "hash": "9701877776419689541"
+      },
+      {
+        "file": "package.json",
+        "hash": "15097068689231177672"
+      },
+      {
+        "file": "lerna.json",
+        "hash": "7090668797928876834"
+      },
+      {
+        "file": ".eslintrc.js",
+        "hash": "14953800338292011843"
+      },
+      {
+        "file": ".github/workflows/publish.yml",
+        "hash": "16767759709196562309"
+      }
+    ],
+    "projectFileMap": {
+      "@waitingonalice/design-system": [
+        {
+          "file": "design-system/.npmignore",
+          "hash": "13768711444487396626"
+        },
+        {
+          "file": "design-system/.storybook/main.js",
+          "hash": "14717195573486535764"
+        },
+        {
+          "file": "design-system/.storybook/preview.js",
+          "hash": "12062343297200448048"
+        },
+        {
+          "file": "design-system/package.json",
+          "hash": "11892202000973119645",
+          "deps": [
+            "npm:clsx",
+            "npm:@rollup/plugin-commonjs",
+            "npm:@rollup/plugin-node-resolve",
+            "npm:@storybook/addon-essentials",
+            "npm:@storybook/addon-interactions",
+            "npm:@storybook/addon-links",
+            "npm:@storybook/addon-onboarding",
+            "npm:@storybook/blocks",
+            "npm:@storybook/react",
+            "npm:@storybook/react-vite",
+            "npm:@storybook/test",
+            "npm:@tailwindcss/forms",
+            "npm:@types/react",
+            "npm:@types/react-dom",
+            "npm:autoprefixer",
+            "npm:postcss",
+            "npm:prop-types",
+            "npm:react",
+            "npm:react-dom",
+            "npm:rollup-plugin-copy",
+            "npm:rollup-plugin-dts",
+            "npm:rollup-plugin-generate-package-json",
+            "npm:rollup-plugin-peer-deps-external",
+            "npm:rollup-plugin-postcss",
+            "npm:rollup-plugin-terser",
+            "npm:rollup-plugin-typescript2",
+            "npm:storybook",
+            "npm:tailwindcss",
+            "npm:vite"
+          ]
+        },
+        {
+          "file": "design-system/postcss.config.cjs",
+          "hash": "8055263870272897227"
+        },
+        {
+          "file": "design-system/rollup.config.js",
+          "hash": "8676544336877037049"
+        },
+        {
+          "file": "design-system/scripts/generatePackage.js",
+          "hash": "18240113075051153182"
+        },
+        {
+          "file": "design-system/scripts/getFolder.js",
+          "hash": "7333161404503333660"
+        },
+        {
+          "file": "design-system/src/components/button/Button.stories.tsx",
+          "hash": "16091330978123696506"
+        },
+        {
+          "file": "design-system/src/components/button/index.tsx",
+          "hash": "10551069533325486530"
+        },
+        {
+          "file": "design-system/src/components/checkbox/index.tsx",
+          "hash": "9381976287926800148"
+        },
+        {
+          "file": "design-system/src/components/index.ts",
+          "hash": "15593250890171313335"
+        },
+        {
+          "file": "design-system/src/components/text/index.tsx",
+          "hash": "7375658584492460134"
+        },
+        {
+          "file": "design-system/src/index.ts",
+          "hash": "5427156499007266749"
+        },
+        {
+          "file": "design-system/src/styles/tailwind.css",
+          "hash": "2866083945719690482"
+        },
+        {
+          "file": "design-system/tailwind.config.js",
+          "hash": "8288575415372207038"
+        },
+        {
+          "file": "design-system/tsconfig.json",
+          "hash": "10615637407159964207"
+        },
+        {
+          "file": "design-system/yarn.lock",
+          "hash": "12931560315337877744"
+        }
+      ]
+    }
+  }
+}
