@@ -40,10 +40,10 @@ const toastStatusVariants = cva(
   {
     variants: {
       variant: {
-        default: "border bg-white text-dark",
-        destructive: "bg-errorLight text-errorMain",
-        success: "bg-successMain text-successTertiary",
-        warning: "bg-warningMain text-warningTertiary",
+        default: "border bg-white text-secondary-5",
+        destructive: "bg-error-light text-error-dark",
+        success: "bg-success-light text-success-dark",
+        warning: "bg-warning-light text-warning-dark",
       },
     },
     defaultVariants: {

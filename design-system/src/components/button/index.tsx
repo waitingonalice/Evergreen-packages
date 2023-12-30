@@ -2,13 +2,7 @@ import clsx from "clsx";
 
 export interface ButtonProps {
   className?: string;
-  variant?:
-    | "errorLink"
-    | "error"
-    | "primary"
-    | "primaryLink"
-    | "secondary"
-    | "secondaryLink";
+  variant?: "errorLink" | "error" | "primary" | "primaryLink" | "secondary";
   disabled?: boolean;
   size?: "default" | "small";
   value?: string;
@@ -35,29 +29,28 @@ export const Button = ({
     "whitespace-nowrap transition-all duration-100 disabled:cursor-not-allowed disabled:opacity-30 text-[14px] font-medium tracking-[0.0125em] flex justify-center items-center gap-x-1";
 
   const baseStyleButton = clsx(
-    "first-letter:focus:outline-none shadow-sm rounded-md active:enabled:ring-4 active:enabled:ring-offset-1",
+    "first-letter:focus:outline-none shadow-sm rounded-md active:enabled:ring-2 active:enabled:ring-offset-1",
     size === "small" ? "px-2 py-1" : "px-4 py-2"
   );
 
   const variantMapper = {
     primary: clsx(
-      "shadow-primary-2/40 bg-primary hover:enabled:bg-secondary text-important active:enabled:bg-tertiary active:enabled:ring-primary-2",
+      "shadow-primary-light/40 bg-primary-main hover:enabled:bg-primary-light text-secondary-1 active:enabled:bg-primary-dark active:enabled:ring-primary-light",
       baseStyleButton
     ),
     secondary: clsx(
-      "shadow-primary-2/40 bg-important text-primary hover:enabled:bg-gray-200 active:enabled:bg-gray-300 active:enabled:ring-primary-2",
+      "shadow-secondary-1/40 bg-secondary-1 text-primary-main hover:enabled:bg-gray-2 active:enabled:bg-gray-3 active:enabled:ring-primary-light",
       baseStyleButton
     ),
     error: clsx(
-      "shadow-errorMain/40 bg-errorMain text-important hover:enabled:bg-errorSecondary active:enabled:bg-errorTertiary active:enabled:ring-errorMain",
+      "shadow-error-main/40 bg-error-dark text-secondary-1 hover:enabled:bg-error-dark/90 active:enabled:bg-error-main active:enabled:ring-error-main",
       baseStyleButton
     ),
     primaryLink:
-      "hover:text-secondary text-primary active:enabled:text-tertiary",
-    secondaryLink:
-      "hover:text-gray-200 text-important active:enabled:text-gray-300",
+      "hover:text-primary-dark text-primary-main active:enabled:text-primary-dark",
+
     errorLink:
-      "text-errorMain hover:text-errorSecondary active:enabled:text-errorTertiary",
+      "text-error-main hover:text-error-dark active:enabled:text-error-dark",
   };
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
