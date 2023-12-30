@@ -3,7 +3,7 @@ import React from "react";
 import { Button } from "../button";
 import { Toaster, useToast } from ".";
 
-type ToastType = ReturnType<typeof useToast>["toast"];
+type ToastType = typeof useToast;
 
 const meta: Meta<ToastType> = {
   title: "Components/Toast",
@@ -38,44 +38,44 @@ export const Description = () => (
 );
 
 export const Demo = () => {
-  const { toast } = useToast();
+  const { renderToast } = useToast();
   const handleTriggerToast = () => {
-    toast({
+    renderToast({
       title: "Toast title",
       description: "Toast description",
       position: "top",
     });
   };
   const handleTriggerToast1 = () => {
-    toast({
+    renderToast({
       title: "Toast title",
       description: "Toast description",
       position: "bottom",
     });
   };
   const handleTriggerToast2 = () => {
-    toast({
+    renderToast({
       title: "Toast title",
       description: "Toast description",
       variant: "success",
     });
   };
   const handleTriggerToast3 = () => {
-    toast({
+    renderToast({
       title: "Toast title",
       description: "Toast description",
       variant: "warning",
     });
   };
   const handleTriggerToast4 = () => {
-    toast({
+    renderToast({
       title: "Toast title",
       description: "Toast description",
       variant: "destructive",
     });
   };
   const handleTriggerToast5 = () => {
-    toast({
+    renderToast({
       title: "Toast title",
       description: "Toast description",
       variant: "default",

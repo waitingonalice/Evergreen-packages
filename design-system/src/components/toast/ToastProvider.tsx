@@ -73,6 +73,7 @@ const Toast = React.forwardRef<
   <ToastPrimitives.Root
     ref={ref}
     className={cn(
+      "mb-2",
       toastStatusVariants({ variant }),
       toastAnimationVariants({ position }),
       className

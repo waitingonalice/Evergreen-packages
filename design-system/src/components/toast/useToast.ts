@@ -1,8 +1,6 @@
-/* eslint-disable no-use-before-define */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { ToastActionElement, ToastProps } from "./ToastProvider";
 
-const TOAST_LIMIT = 1;
 const TOAST_REMOVE_DELAY = 3000;
 
 type ToasterToast = ToastProps & {
@@ -11,14 +9,10 @@ type ToasterToast = ToastProps & {
   description?: React.ReactNode;
   action?: ToastActionElement;
   position?: "top" | "bottom";
+  limit?: number;
 };
 
 type Toast = Omit<ToasterToast, "id">;
-
-interface State {
-  toasts: ToasterToast[];
-  position: ToasterToast["position"];
-}
 
 const actionTypes = {
   ADD_TOAST: "ADD_TOAST",
@@ -34,11 +28,13 @@ type Action =
       type: ActionType["ADD_TOAST"];
       toast: ToasterToast;
       position: ToasterToast["position"];
+      limit?: number;
     }
   | {
       type: ActionType["UPDATE_TOAST"];
       toast: Partial<ToasterToast>;
       position: ToasterToast["position"];
+      limit?: number;
     }
   | {
       type: ActionType["DISMISS_TOAST"];
@@ -49,18 +45,20 @@ type Action =
       toastId?: ToasterToast["id"];
     };
 
-let memoryState: State = { toasts: [], position: "bottom" };
-
-const listeners: Array<(state: State) => void> = [];
-
-function dispatch(action: Action) {
-  memoryState = reducer(memoryState, action);
-  listeners.forEach((listener) => {
-    listener(memoryState);
-  });
+interface State {
+  toasts: ToasterToast[];
+  position: ToasterToast["position"];
+  limit?: number;
 }
-
+let memoryState: State = { toasts: [], position: "bottom", limit: 1 };
+let listener: React.Dispatch<React.SetStateAction<State>> | null = null;
+let count = 0;
 const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>();
+
+function genId() {
+  count = (count + 1) % Number.MAX_SAFE_INTEGER;
+  return count.toString();
+}
 
 const addToRemoveQueue = (toastId: string) => {
   if (toastTimeouts.has(toastId)) {
@@ -69,12 +67,13 @@ const addToRemoveQueue = (toastId: string) => {
 
   const timeout = setTimeout(() => {
     toastTimeouts.delete(toastId);
+    // eslint-disable-next-line no-use-before-define
     dispatch({
       type: "REMOVE_TOAST",
       toastId,
     });
   }, TOAST_REMOVE_DELAY);
-
+  // clean up the timeout if the toast is dismissed before the timeout is reached
   toastTimeouts.set(toastId, timeout);
 };
 
@@ -84,7 +83,10 @@ export const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         position: action.position,
-        toasts: [action.toast, ...state.toasts].slice(0, TOAST_LIMIT),
+        toasts: [action.toast, ...state.toasts].slice(
+          0,
+          action.limit ?? state.limit
+        ),
       };
 
     case "UPDATE_TOAST":
@@ -137,13 +139,15 @@ export const reducer = (state: State, action: Action): State => {
   }
 };
 
-let count = 0;
-function genId() {
-  count = (count + 1) % Number.MAX_SAFE_INTEGER;
-  return count.toString();
+function dispatch(action: Action) {
+  memoryState = reducer(memoryState, action);
+  if (listener) listener(memoryState);
 }
-function toast({ ...props }: Toast) {
+
+function renderToast({ ...props }: Toast) {
   const id = genId();
+
+  const dismiss = () => dispatch({ type: "DISMISS_TOAST", toastId: id });
 
   dispatch({
     type: "ADD_TOAST",
@@ -156,42 +160,26 @@ function toast({ ...props }: Toast) {
       },
     },
     position: props.position,
+    limit: props.limit,
   });
-
-  const update = (props: ToasterToast) =>
-    dispatch({
-      type: "UPDATE_TOAST",
-      toast: { ...props, id },
-      position: props.position,
-    });
-
-  const dismiss = () => dispatch({ type: "DISMISS_TOAST", toastId: id });
-
-  return {
-    id,
-    dismiss,
-    update,
-  };
 }
 
 function useToast() {
   const [state, setState] = useState<State>(memoryState);
+  listener = setState;
 
-  useEffect(() => {
-    listeners.push(setState);
-    return () => {
-      const index = listeners.indexOf(setState);
-      if (index > -1) {
-        listeners.splice(index, 1);
-      }
-    };
-  }, [state]);
-  console.log(state);
   return {
     ...state,
-    toast,
+    renderToast,
+    update: (toast: ToasterToast) =>
+      dispatch({
+        type: "UPDATE_TOAST",
+        toast,
+        position: toast.position,
+        limit: toast.limit,
+      }),
     dismiss: (toastId?: string) => dispatch({ type: "DISMISS_TOAST", toastId }),
   };
 }
 
-export { useToast, toast };
+export { useToast };
