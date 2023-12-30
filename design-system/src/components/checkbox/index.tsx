@@ -34,12 +34,12 @@ export const Checkbox = ({
         disabled={disabled}
         type="checkbox"
         className={clsx(
-          "w-4 h-4 border border-standard rounded-sm focus:ring-primary transition-all duration-100 appearance-none disabled:cursor-not-allowed",
+          "w-4 h-4 border border-secondary-4 rounded-md focus:ring-primary-main transition-all duration-100 appearance-none disabled:cursor-not-allowed",
           indeterminate &&
-            "enabled:indeterminate:bg-primary disabled:indeterminate:bg-primary",
+            "enabled:indeterminate:bg-primary-main disabled:indeterminate:bg-primary-main",
           checked &&
-            "enabled:checked:bg-primary disabled:checked:bg-primary checked:ring-transparent",
-          disabled && "disabled:opacity-50 bg-disabled"
+            "enabled:checked:bg-primary-main disabled:checked:bg-primary-main checked:ring-transparent",
+          disabled && "disabled:opacity-50 bg-secondary-3"
         )}
         checked={checked}
         // eslint-disable-next-line no-param-reassign
