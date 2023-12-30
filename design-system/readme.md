@@ -21,6 +21,24 @@ module.exports = {
 
 This approach allows you to merge configurations from baseConfig with your own tailwind.config.js file, ensuring consistency in Tailwind CSS configurations across projects.
 
+You are also required to input the directory of the node_modules folder of the design system in the content array of your tailwind.config.js file.
+
+This is done by adding the following line to the content array:
+
+```
+e.g.
+'content: [
+    "./index.html",
+    "./src/**/*.{jsx,tsx}",
+    "../node_modules/@waitingonalice/design-system/**/*.{cjs,js}",
+  ],',
+```
+
+Or whereever your project's node_modules folder is located.
+
+For more information refer to the official tailwind documentation.
+`https://tailwindcss.com/docs/content-configuration`
+
 ## Using the Design System
 
 1. Install the package
