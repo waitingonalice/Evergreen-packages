@@ -1,5 +1,9 @@
 import { useState } from "react";
-import type { ToastActionElement, ToastProps } from "./ToastProvider";
+import type {
+  ToastActionElement,
+  ToastCustomIcon,
+  ToastProps,
+} from "./ToastProvider";
 
 const TOAST_REMOVE_DELAY = 3000;
 
@@ -8,6 +12,7 @@ type ToasterToast = ToastProps & {
   title?: React.ReactNode;
   description?: React.ReactNode;
   action?: ToastActionElement;
+  customIcon?: ToastCustomIcon;
   position?: "top" | "bottom";
   limit?: number;
 };

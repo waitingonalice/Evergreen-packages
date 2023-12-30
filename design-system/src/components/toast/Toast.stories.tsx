@@ -1,5 +1,6 @@
 import { Meta } from "@storybook/react";
 import React from "react";
+import { LucideTwitter } from "lucide-react";
 import { Button } from "../button";
 import { Toaster, useToast } from ".";
 
@@ -82,6 +83,14 @@ export const Demo = () => {
       action: <Button size="small">Button</Button>,
     });
   };
+  const handleTriggerToast6 = () => {
+    renderToast({
+      title: "Toast title",
+      description: "Toast description",
+      variant: "default",
+      customIcon: <LucideTwitter className="w-5 h-5" />,
+    });
+  };
 
   return (
     <div className="flex flex-col gap-y-2">
@@ -91,7 +100,9 @@ export const Demo = () => {
       <Button onClick={handleTriggerToast3}>Trigger toast Warning</Button>
       <Button onClick={handleTriggerToast4}>Trigger toast Error</Button>
       <Button onClick={handleTriggerToast5}>Trigger toast With Action</Button>
-
+      <Button onClick={handleTriggerToast6}>
+        Trigger toast With Custom Icon
+      </Button>
       <Toaster />
     </div>
   );
