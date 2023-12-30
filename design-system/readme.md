@@ -34,7 +34,7 @@ e.g.
   ],',
 ```
 
-Or whereever your project's node_modules folder is located.
+Or wherever your project's node_modules folder is located.
 
 For more information refer to the official tailwind documentation.
 `https://tailwindcss.com/docs/content-configuration`
