@@ -44,3 +44,8 @@ export const ErrorLink = Template.bind({});
 ErrorLink.args = {
   variant: "errorLink",
 };
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  disabled: true,
+};

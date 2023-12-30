@@ -30,7 +30,7 @@ module.exports = {
           1: "#efedea",
           2: "#e7e5e4",
           3: "#d1d5db",
-          4: "#9ca3af",
+          4: "#9ca3af", // subtext
           5: "#1f2937",
         },
         success: {
@@ -55,29 +55,9 @@ module.exports = {
         },
         gray: {
           1: "rgba(0,0,0,0.05)",
-          2: "rgba(0,0,0,0.1)",
+          2: "rgba(0,0,0,0.1)", // disabled
           3: "rgba(0,0,0,0.2)",
         },
-        // primary: "#0f766e",
-        // "primary-2": "#0d9488",
-        // secondary: "#065f46",
-        // tertiary: "#064e3b",
-        // "primary-dark": "#01241A",
-        // errorMain: "#dc2626",
-        // errorSecondary: "#b91c1c",
-        // errorTertiary: "#991b1b",
-        // errorLight: "#ffd9d9",
-        // successMain: "#d9ffdd",
-        // successSecondary: "#41cc4f",
-        // successTertiary: "#00750c",
-        // warningMain: "#fff5cc",
-        // warningSecondary: "#ffcf0d",
-        // warningTertiary: "#997b00",
-        // important: "#efedea",
-        // subtext: "#9ca3af",
-        // background: "#e7e5e4",
-        // dark: "#1f2937", // gray-800
-        // disabled: "#d1d5db", // gray-300
       },
     },
   },

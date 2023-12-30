@@ -39,7 +39,7 @@ export const Checkbox = ({
             "enabled:indeterminate:bg-primary-main disabled:indeterminate:bg-primary-main",
           checked &&
             "enabled:checked:bg-primary-main disabled:checked:bg-primary-main checked:ring-transparent",
-          disabled && "disabled:opacity-50 bg-secondary-3"
+          disabled && "bg-gray-2"
         )}
         checked={checked}
         // eslint-disable-next-line no-param-reassign
