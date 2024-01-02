@@ -1,6 +1,7 @@
-/* eslint-disable no-console */
+const { getFolders } = require("./getFolders.js");
 const { resolve, join } = require("path");
 const { readFile, writeFile } = require("fs-extra");
+
 const packagePath = process.cwd();
 const buildPath = join(packagePath, "./build");
 
@@ -14,8 +15,32 @@ async function createPackageFile() {
   );
   const { scripts, devDependencies, ...packageOthers } =
     JSON.parse(packageData);
+
+  const generateExport = (acc, curr, type) => {
+    acc[curr] = {
+      import: `./${type}/${curr}/index.js`,
+      require: `./${type}/${curr}/index.cjs`,
+    };
+    return acc;
+  };
+
+  const componentExports = getFolders("./build/components").reduce(
+    (acc, curr) => generateExport(acc, curr, "components"),
+    {}
+  );
+  const hookExports = getFolders("./build/hooks").reduce(
+    (acc, curr) => generateExport(acc, curr, "hooks"),
+    {}
+  );
+  const utilExports = getFolders("./build/utils").reduce(
+    (acc, curr) => generateExport(acc, curr, "utils"),
+    {}
+  );
   const newPackageData = {
     ...packageOthers,
+    exports: {
+      ".": { ...componentExports, ...hookExports, ...utilExports },
+    },
     private: false,
     typings: "./index.d.ts",
     main: "./cjs/index.js",
