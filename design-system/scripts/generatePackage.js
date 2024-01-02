@@ -20,6 +20,7 @@ async function createPackageFile() {
     acc[curr] = {
       import: `./${type}/${curr}/index.js`,
       require: `./${type}/${curr}/index.cjs`,
+      types: `./${type}/${curr}/index.d.ts`,
     };
     return acc;
   };
@@ -36,10 +37,19 @@ async function createPackageFile() {
     (acc, curr) => generateExport(acc, curr, "utils"),
     {}
   );
+
   const newPackageData = {
     ...packageOthers,
     exports: {
-      ".": { ...componentExports, ...hookExports, ...utilExports },
+      ".": {
+        ...componentExports,
+        ...hookExports,
+        ...utilExports,
+        "tailwind.config": {
+          import: "./tailwind.config.js",
+          require: "./tailwind.config.js",
+        },
+      },
     },
     private: false,
     typings: "./index.d.ts",
