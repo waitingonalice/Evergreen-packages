@@ -41,11 +41,6 @@ async function createPackageFile() {
   const newPackageData = {
     ...packageOthers,
     exports: {
-      ".": {
-        import: "./index.js",
-        require: "./cjs/index.js",
-        types: "./index.d.ts",
-      },
       "tailwind.config": {
         import: "./tailwind.config.js",
         require: "./tailwind.config.js",
