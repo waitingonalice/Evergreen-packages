@@ -146,7 +146,9 @@ export const reducer = (state: State, action: Action): State => {
 
 function dispatch(action: Action) {
   memoryState = reducer(memoryState, action);
-  if (listener) listener(memoryState);
+  if (listener) {
+    listener(memoryState);
+  }
 }
 
 function renderToast({ ...props }: Toast) {
