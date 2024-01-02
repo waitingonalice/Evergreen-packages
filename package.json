@@ -12,7 +12,7 @@
     "prettier:write": "prettier . --write",
     "commit": "git-cz",
     "prepare": "husky install",
-    "version:prerelrease": "lerna version prerelease --yes -m \"chore(release): publish prerelease\"",
+    "version:prerelease": "lerna version prerelease --yes -m \"chore(release): publish prerelease\"",
     "version:patch": "lerna version patch --yes -m \"chore(release): publish patch\"",
     "version:minor": "lerna version minor --yes -m \"chore(release): publish minor\"",
     "version:major": "lerna version major --yes -m \"chore(release): publish major\"",
