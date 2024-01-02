@@ -42,14 +42,17 @@ async function createPackageFile() {
     ...packageOthers,
     exports: {
       ".": {
-        ...componentExports,
-        ...hookExports,
-        ...utilExports,
-        "tailwind.config": {
-          import: "./tailwind.config.js",
-          require: "./tailwind.config.js",
-        },
+        import: "./index.js",
+        require: "./cjs/index.js",
+        types: "./index.d.ts",
       },
+      "tailwind.config": {
+        import: "./tailwind.config.js",
+        require: "./tailwind.config.js",
+      },
+      ...componentExports,
+      ...hookExports,
+      ...utilExports,
     },
     private: false,
     typings: "./index.d.ts",
