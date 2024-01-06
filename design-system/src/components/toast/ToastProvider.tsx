@@ -116,9 +116,9 @@ const ToastIcon = ({
 }) => {
   const iconMap = {
     default: null,
-    success: <CheckCircle className="h-4 w-4 mt-0.5" />,
-    destructive: <AlertCircle className="h-4 w-4 mt-0.5" />,
-    warning: <AlertCircle className="h-4 w-4 mt-0.5" />,
+    success: <CheckCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />,
+    destructive: <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />,
+    warning: <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />,
   };
   if (customIcon) return customIcon;
   if (variant) return iconMap[variant];
