@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type {
   ToastActionElement,
   ToastCustomIcon,
   ToastProps,
 } from "./ToastProvider";
 
-const TOAST_REMOVE_DELAY = 3000;
+const TOAST_REMOVE_DELAY = 1000000;
 
 type ToasterToast = ToastProps & {
   id: string;
@@ -56,7 +56,8 @@ interface State {
   limit?: number;
 }
 let memoryState: State = { toasts: [], position: "bottom", limit: 1 };
-let listener: React.Dispatch<React.SetStateAction<State>> | null = null;
+// let listener: React.Dispatch<React.SetStateAction<State>> | null = null;
+const listeners: React.Dispatch<React.SetStateAction<State>>[] = [];
 let count = 0;
 const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>();
 
@@ -146,9 +147,12 @@ export const reducer = (state: State, action: Action): State => {
 
 function dispatch(action: Action) {
   memoryState = reducer(memoryState, action);
-  if (listener) {
+  // if (listener) {
+  //   listener(memoryState);
+  // }
+  listeners.forEach((listener) => {
     listener(memoryState);
-  }
+  });
 }
 
 function renderToast({ ...props }: Toast) {
@@ -173,7 +177,16 @@ function renderToast({ ...props }: Toast) {
 
 function useToast() {
   const [state, setState] = useState<State>(memoryState);
-  listener = setState;
+  // listener = setState;
+  useEffect(() => {
+    listeners.push(setState);
+    return () => {
+      const index = listeners.indexOf(setState);
+      if (index > -1) {
+        listeners.splice(index, 1);
+      }
+    };
+  }, [state]);
 
   return {
     ...state,

@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { Text } from "../text";
 import {
   Toast,
@@ -21,11 +20,7 @@ function Toaster() {
               <ToastIcon variant={props.variant} customIcon={customIcon} />
               <div className="grid gap-1">
                 {title && <Text type="body-bold">{title}</Text>}
-                {description && (
-                  <Text className={clsx()} type="body">
-                    {description}
-                  </Text>
-                )}
+                {description && <Text type="body">{description}</Text>}
               </div>
             </div>
             {action}
@@ -39,4 +34,3 @@ function Toaster() {
 }
 
 export { Toaster, useToast };
-// ((props.variant && props.variant !== "default") || customIcon) && "ml-6";
