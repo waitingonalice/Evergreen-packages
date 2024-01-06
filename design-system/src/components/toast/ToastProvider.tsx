@@ -128,9 +128,7 @@ const ToastIcon = ({
 ToastClose.displayName = ToastPrimitives.Close.displayName;
 
 type ToastProps = React.ComponentPropsWithoutRef<typeof Toast>;
-
 type ToastActionElement = React.ReactElement<typeof ToastAction>;
-
 type ToastCustomIcon = React.ReactNode;
 
 export {
