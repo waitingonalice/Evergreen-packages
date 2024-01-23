@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const { resolve, join } = require("path");
-const { readFile, writeFile } = require("fs-extra");
+const { readFile, writeFile, copyFile } = require("fs-extra");
 const packagePath = process.cwd();
 const buildPath = join(packagePath, "./build");
 
@@ -28,11 +28,14 @@ async function createPackageFile() {
   console.log(`Created package.json in ${targetPath}`);
 }
 
+async function includeFileInBuild(filePath) {
+  copyFile(resolve(packagePath, filePath), resolve(buildPath, filePath));
+}
+
 async function run() {
   try {
     await createPackageFile();
-    // await includeFileInBuild("./README.md");
-    // await includeFileInBuild('../../LICENSE');
+    await includeFileInBuild("./README.md");
   } catch (err) {
     console.error(err);
     process.exit(1);
