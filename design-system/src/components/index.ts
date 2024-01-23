@@ -4,3 +4,4 @@ export * from "./checkbox";
 export * from "./toast";
 export * from "./resizable";
 export * from "./switch";
+export * from "./progress";
