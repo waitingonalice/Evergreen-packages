@@ -16,71 +16,11 @@ async function createPackageFile() {
   const { scripts, devDependencies, ...packageOthers } =
     JSON.parse(packageData);
 
-  const componentExports = getFolders("./build/components").reduce(
-    (acc, curr) => {
-      const accCopy = {
-        ...acc,
-        // [`./${curr}`]: {
-        //   import: `./components/${curr}/index.js`,
-        //   require: `./components/${curr}/index.cjs`,
-        //   types: `./components/${curr}/index.d.ts`,
-        // },
-        [`./${curr}/*`]: {
-          default: `./components/${curr}/*.js`,
-        },
-      };
-      return accCopy;
-    },
-    {}
-  );
-
-  const utilExports = getFolders("./build/utils").reduce((acc, curr) => {
-    const accCopy = {
-      ...acc,
-      // [`./${curr}`]: {
-      //   import: `./utils/${curr}/index.js`,
-      //   require: `./utils/${curr}/index.cjs`,
-      //   types: `./utils/${curr}/index.d.ts`,
-      // },
-      [`./${curr}/*`]: {
-        default: `./utils/${curr}/*.js`,
-      },
-    };
-    return accCopy;
-  }, {});
-
-  const hookExports = getFolders("./build/hooks").reduce((acc, curr) => {
-    const accCopy = {
-      ...acc,
-      // [`./${curr}`]: {
-      //   import: `./hooks/${curr}/index.js`,
-      //   require: `./hooks/${curr}/index.cjs`,
-      //   types: `./hooks/${curr}/index.d.ts`,
-      // },
-      [`./${curr}/*`]: {
-        default: `./hooks/${curr}/*.js`,
-      },
-    };
-    return accCopy;
-  }, {});
-
   const newPackageData = {
     ...packageOthers,
     private: false,
     main: "./cjs/index.js",
     module: "./index.js",
-    exports: {
-      "./*": {
-        // default: "./*.js",
-        import: "./index.js",
-        require: "./cjs/index.js",
-        types: "./index.d.ts",
-      },
-      "./tailwindConfig": "./tailwind.config.js",
-      ...componentExports,
-      ...hookExports,
-      ...utilExports,
-    },
   };
 
   const targetPath = resolve(buildPath, "./package.json");
