@@ -1,7 +1,7 @@
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import copy from "rollup-plugin-copy";
-// import generatePackageJson from "rollup-plugin-generate-package-json";
+import generatePackageJson from "rollup-plugin-generate-package-json";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
 import { terser } from "rollup-plugin-terser";
@@ -47,14 +47,14 @@ const subPackagesConfig = (type, name) => ({
   ],
   plugins: [
     ...plugins,
-    // generatePackageJson({
-    //   baseContents: {
-    //     name: `${name}`,
-    //     main: "./index.cjs", // --> points to cjs format entry point of whole library
-    //     module: "./index.js", // --> points to esm format entry point of individual component
-    //     types: `./index.d.ts`, // --> points to types definition file of individual component
-    //   },
-    // }),
+    generatePackageJson({
+      baseContents: {
+        name: `${name}`,
+        main: "./index.cjs", // --> points to cjs format entry point of whole library
+        module: "./index.js", // --> points to esm format entry point of individual component
+        types: `./index.d.ts`, // --> points to types definition file of individual component
+      },
+    }),
   ],
   external: ["react", "react-dom"],
 });
