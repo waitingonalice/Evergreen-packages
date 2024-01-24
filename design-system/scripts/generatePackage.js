@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 const { resolve, join } = require("path");
 const { readFile, writeFile, copyFile } = require("fs-extra");
-const { getFolders } = require("./getFolders");
 const packagePath = process.cwd();
 const buildPath = join(packagePath, "./build");
 
