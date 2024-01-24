@@ -14,10 +14,10 @@ async function createPackageFile() {
   );
   const { scripts, devDependencies, ...packageOthers } =
     JSON.parse(packageData);
+
   const newPackageData = {
     ...packageOthers,
     private: false,
-    typings: "./index.d.ts",
     main: "./cjs/index.js",
     module: "./index.js",
   };
