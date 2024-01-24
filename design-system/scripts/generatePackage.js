@@ -31,6 +31,30 @@ async function createPackageFile() {
     {}
   );
 
+  const utilExports = getFolders("./build/utils").reduce((acc, curr) => {
+    const accCopy = {
+      ...acc,
+      [`./${curr}`]: {
+        import: `./utils/${curr}/index.js`,
+        require: `./utils/${curr}/index.cjs`,
+        types: `./utils/${curr}/index.d.ts`,
+      },
+    };
+    return accCopy;
+  }, {});
+
+  const hookExports = getFolders("./build/hooks").reduce((acc, curr) => {
+    const accCopy = {
+      ...acc,
+      [`./${curr}`]: {
+        import: `./hooks/${curr}/index.js`,
+        require: `./hooks/${curr}/index.cjs`,
+        types: `./hooks/${curr}/index.d.ts`,
+      },
+    };
+    return accCopy;
+  }, {});
+
   const newPackageData = {
     ...packageOthers,
     private: false,
@@ -44,6 +68,8 @@ async function createPackageFile() {
       },
       "./tailwindConfig": "./tailwind.config.js",
       ...componentExports,
+      ...hookExports,
+      ...utilExports,
     },
   };
 

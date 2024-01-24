@@ -1,7 +1,7 @@
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import copy from "rollup-plugin-copy";
-import generatePackageJson from "rollup-plugin-generate-package-json";
+// import generatePackageJson from "rollup-plugin-generate-package-json";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
 import { terser } from "rollup-plugin-terser";
