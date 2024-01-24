@@ -20,10 +20,13 @@ async function createPackageFile() {
     (acc, curr) => {
       const accCopy = {
         ...acc,
-        [`./${curr}`]: {
-          import: `./components/${curr}/index.js`,
-          require: `./components/${curr}/index.cjs`,
-          types: `./components/${curr}/index.d.ts`,
+        // [`./${curr}`]: {
+        //   import: `./components/${curr}/index.js`,
+        //   require: `./components/${curr}/index.cjs`,
+        //   types: `./components/${curr}/index.d.ts`,
+        // },
+        [`./${curr}/*`]: {
+          default: `./components/${curr}/*.js`,
         },
       };
       return accCopy;
@@ -34,10 +37,13 @@ async function createPackageFile() {
   const utilExports = getFolders("./build/utils").reduce((acc, curr) => {
     const accCopy = {
       ...acc,
-      [`./${curr}`]: {
-        import: `./utils/${curr}/index.js`,
-        require: `./utils/${curr}/index.cjs`,
-        types: `./utils/${curr}/index.d.ts`,
+      // [`./${curr}`]: {
+      //   import: `./utils/${curr}/index.js`,
+      //   require: `./utils/${curr}/index.cjs`,
+      //   types: `./utils/${curr}/index.d.ts`,
+      // },
+      [`./${curr}/*`]: {
+        default: `./utils/${curr}/*.js`,
       },
     };
     return accCopy;
@@ -46,10 +52,13 @@ async function createPackageFile() {
   const hookExports = getFolders("./build/hooks").reduce((acc, curr) => {
     const accCopy = {
       ...acc,
-      [`./${curr}`]: {
-        import: `./hooks/${curr}/index.js`,
-        require: `./hooks/${curr}/index.cjs`,
-        types: `./hooks/${curr}/index.d.ts`,
+      // [`./${curr}`]: {
+      //   import: `./hooks/${curr}/index.js`,
+      //   require: `./hooks/${curr}/index.cjs`,
+      //   types: `./hooks/${curr}/index.d.ts`,
+      // },
+      [`./${curr}/*`]: {
+        default: `./hooks/${curr}/*.js`,
       },
     };
     return accCopy;
@@ -61,7 +70,8 @@ async function createPackageFile() {
     main: "./cjs/index.js",
     module: "./index.js",
     exports: {
-      ".": {
+      "./*": {
+        // default: "./*.js",
         import: "./index.js",
         require: "./cjs/index.js",
         types: "./index.d.ts",
