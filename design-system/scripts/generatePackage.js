@@ -30,11 +30,15 @@ async function createPackageFile() {
   const newPackageData = {
     ...packageOthers,
     private: false,
-    typings: "./index.d.ts",
     main: "./cjs/index.js",
     module: "./index.js",
     exports: {
-      ".": "./*.js",
+      ".": {
+        import: "./index.js",
+        require: "./cjs/index.js",
+        types: "./index.d.ts",
+      },
+      "./tailwindConfig": "./tailwind.config.js",
       ...componentExports,
     },
   };
