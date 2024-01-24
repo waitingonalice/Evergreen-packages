@@ -47,14 +47,14 @@ const subPackagesConfig = (type, name) => ({
   ],
   plugins: [
     ...plugins,
-    generatePackageJson({
-      baseContents: {
-        name: `${name}`,
-        main: "./index.cjs", // --> points to cjs format entry point of whole library
-        module: "./index.js", // --> points to esm format entry point of individual component
-        types: `./index.d.ts`, // --> points to types definition file of individual component
-      },
-    }),
+    // generatePackageJson({
+    //   baseContents: {
+    //     name: `${name}`,
+    //     main: "./index.cjs", // --> points to cjs format entry point of whole library
+    //     module: "./index.js", // --> points to esm format entry point of individual component
+    //     types: `./index.d.ts`, // --> points to types definition file of individual component
+    //   },
+    // }),
   ],
   external: ["react", "react-dom"],
 });
