@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "declaration": true,
     "declarationDir": "build",
+    "declarationMap": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react-jsx",

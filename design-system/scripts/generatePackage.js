@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 const { resolve, join } = require("path");
 const { readFile, writeFile, copyFile } = require("fs-extra");
+const { getFolders } = require("./getFolders");
 const packagePath = process.cwd();
 const buildPath = join(packagePath, "./build");
 
@@ -14,12 +15,28 @@ async function createPackageFile() {
   );
   const { scripts, devDependencies, ...packageOthers } =
     JSON.parse(packageData);
+
+  const componentExports = getFolders("./build/components").reduce(
+    (acc, curr) => {
+      const accCopy = {
+        ...acc,
+        [`./${curr}`]: `./components/${curr}/*.js`,
+      };
+      return accCopy;
+    },
+    {}
+  );
+
   const newPackageData = {
     ...packageOthers,
     private: false,
     typings: "./index.d.ts",
     main: "./cjs/index.js",
     module: "./index.js",
+    exports: {
+      ".": "./*.js",
+      ...componentExports,
+    },
   };
 
   const targetPath = resolve(buildPath, "./package.json");
