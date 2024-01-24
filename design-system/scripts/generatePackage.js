@@ -20,7 +20,11 @@ async function createPackageFile() {
     (acc, curr) => {
       const accCopy = {
         ...acc,
-        [`./${curr}`]: `./components/${curr}/*.js`,
+        [`./${curr}`]: {
+          import: `./components/${curr}/index.js`,
+          require: `./components/${curr}/index.cjs`,
+          types: `./components/${curr}/index.d.ts`,
+        },
       };
       return accCopy;
     },
