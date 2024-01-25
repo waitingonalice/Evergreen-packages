@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import clsx from "clsx";
 
 export interface ButtonProps {
@@ -5,17 +6,16 @@ export interface ButtonProps {
   variant?: "errorLink" | "error" | "primary" | "primaryLink" | "secondary";
   disabled?: boolean;
   size?: "default" | "small";
-  value?: string;
   id?: string;
   children: React.ReactNode;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   prefixIcon?: React.ReactNode;
   suffixIcon?: React.ReactNode;
+  type?: "button" | "submit" | "reset";
 }
 
 export const Button = ({
   id,
-  value,
   onClick,
   children,
   disabled,
@@ -24,6 +24,7 @@ export const Button = ({
   className,
   prefixIcon,
   suffixIcon,
+  type = "button",
 }: ButtonProps) => {
   const baseStyle =
     "whitespace-nowrap transition-all duration-100 disabled:cursor-not-allowed disabled:opacity-30 text-[14px] font-medium tracking-[0.0125em] flex justify-center items-center gap-x-1";
@@ -63,10 +64,9 @@ export const Button = ({
   return (
     <button
       id={id}
-      type="button"
+      type={type}
       className={clsx(baseStyle, variantMapper[variant], className)}
       disabled={disabled}
-      value={value}
       onClick={handleClick}
     >
       {prefixIcon}
