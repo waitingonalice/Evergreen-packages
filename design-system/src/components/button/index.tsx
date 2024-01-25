@@ -12,6 +12,7 @@ export interface ButtonProps {
   prefixIcon?: React.ReactNode;
   suffixIcon?: React.ReactNode;
   type?: "button" | "submit" | "reset";
+  value?: string;
 }
 
 export const Button = ({
@@ -24,6 +25,7 @@ export const Button = ({
   className,
   prefixIcon,
   suffixIcon,
+  value,
   type = "button",
 }: ButtonProps) => {
   const baseStyle =
@@ -68,6 +70,7 @@ export const Button = ({
       className={clsx(baseStyle, variantMapper[variant], className)}
       disabled={disabled}
       onClick={handleClick}
+      value={value}
     >
       {prefixIcon}
       {children}
