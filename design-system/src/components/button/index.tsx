@@ -54,6 +54,7 @@ export const Button = ({
   };
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     if (onClick) {
       onClick(e);
     }
