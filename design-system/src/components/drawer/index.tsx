@@ -11,8 +11,6 @@ import { Text } from "../text";
 
 const Sheet = SheetPrimitive.Root;
 
-const SheetTrigger = SheetPrimitive.Trigger;
-
 const SheetClose = SheetPrimitive.Close;
 
 const SheetPortal = SheetPrimitive.Portal;
@@ -142,9 +140,7 @@ export function Drawer({
 }: DrawerProps) {
   return (
     <Sheet open={open}>
-      <SheetTrigger>
-        <Button {...triggerButton} />
-      </SheetTrigger>
+      <Button {...triggerButton} />
       <SheetContent
         direction={direction}
         onInteractOutside={onClose}
