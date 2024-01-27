@@ -1,6 +1,5 @@
 import { Meta } from "@storybook/react";
-import React from "react";
-import { Grid } from "../../utils/storybook/Grid";
+import React, { useState } from "react";
 import { Drawer } from ".";
 
 const meta: Meta<typeof Drawer> = {
@@ -9,48 +8,33 @@ const meta: Meta<typeof Drawer> = {
 };
 export default meta;
 
-export const Component = () => (
-  <Drawer
-    trigger={{ children: "Open Drawer" }}
-    title="This is the title"
-    description="This is the description"
-    content={<input className="w-full" />}
-    actionButtons={[
-      { children: "Cancel", variant: "secondary" },
-      { children: "Save" },
-    ]}
-  />
-);
-
-export const DifferentDirections = () => (
-  <Grid>
-    Top
+export const Component = () => {
+  const [open, setOpen] = useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  return (
     <Drawer
-      trigger={{ children: "Top" }}
-      direction="top"
+      open={open}
       title="This is the title"
       description="This is the description"
+      content={<input className="w-full" />}
+      onClose={handleClose}
+      triggerButton={{
+        children: "Open Drawer",
+        onClick: handleOpen,
+      }}
+      actionButtons={[
+        {
+          children: "Cancel",
+          variant: "secondary",
+          onClick: handleClose,
+        },
+        { children: "Save", onClick: handleClose },
+      ]}
     />
-    Bottom
-    <Drawer
-      trigger={{ children: "Bottom" }}
-      direction="bottom"
-      title="This is the title"
-      description="This is the description"
-    />
-    Left
-    <Drawer
-      trigger={{ children: "Left" }}
-      direction="left"
-      title="This is the title"
-      description="This is the description"
-    />
-    Right
-    <Drawer
-      trigger={{ children: "Right" }}
-      direction="right"
-      title="This is the title"
-      description="This is the description"
-    />
-  </Grid>
-);
+  );
+};

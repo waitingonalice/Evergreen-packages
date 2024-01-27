@@ -52,12 +52,12 @@ const sheetVariants = cva(
 type SheetContentProps = React.ComponentPropsWithoutRef<
   typeof SheetPrimitive.Content
 > &
-  VariantProps<typeof sheetVariants>;
+  VariantProps<typeof sheetVariants> & { onClickClose: () => void };
 
 const SheetContent = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Content>,
   SheetContentProps
->(({ direction, className, children, ...props }, ref) => (
+>(({ direction, className, children, onClickClose, ...props }, ref) => (
   <SheetPortal>
     <SheetOverlay />
     <SheetPrimitive.Content
@@ -66,7 +66,10 @@ const SheetContent = React.forwardRef<
       {...props}
     >
       {children}
-      <SheetPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-primary-main transition-opacity hover:opacity-100 focus:outline-none focus:ring-1 focus:ring-primary-main focus:ring-offset-2 disabled:pointer-events-none">
+      <SheetPrimitive.Close
+        onClick={onClickClose}
+        className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-primary-main transition-opacity hover:opacity-100 focus:outline-none focus:ring-1 focus:ring-primary-main focus:ring-offset-2 disabled:pointer-events-none"
+      >
         <X className="h-4 w-4" />
         <span className="sr-only">Close</span>
       </SheetPrimitive.Close>
@@ -117,26 +120,34 @@ const SheetDescription = ({ children }: { children: React.ReactNode }) => (
 
 interface DrawerProps {
   actionButtons?: ButtonProps[];
-  trigger: ButtonProps;
+  triggerButton: ButtonProps;
+  open?: boolean;
   title?: string;
   description?: string;
   content?: React.ReactNode;
   direction?: VariantProps<typeof sheetVariants>["direction"];
+  onClose: () => void;
 }
 export function Drawer({
-  trigger,
+  open,
+  triggerButton,
   actionButtons,
+  onClose,
   title,
   description,
   content,
   direction,
 }: DrawerProps) {
   return (
-    <Sheet>
-      <SheetTrigger asChild>
-        <Button {...trigger} />
+    <Sheet open={open}>
+      <SheetTrigger>
+        <Button {...triggerButton} />
       </SheetTrigger>
-      <SheetContent direction={direction}>
+      <SheetContent
+        direction={direction}
+        onInteractOutside={onClose}
+        onClickClose={onClose}
+      >
         <SheetHeader>
           <SheetTitle>{title}</SheetTitle>
           <SheetDescription>{description}</SheetDescription>
@@ -144,7 +155,7 @@ export function Drawer({
         <div className="my-4">{content}</div>
         <SheetFooter>
           {actionButtons?.map((button, index) => (
-            <SheetClose asChild key={index}>
+            <SheetClose key={index}>
               <Button {...button} />
             </SheetClose>
           ))}
