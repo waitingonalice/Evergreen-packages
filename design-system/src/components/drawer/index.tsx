@@ -1,3 +1,5 @@
+"use client";
+
 /* eslint-disable react/no-array-index-key */
 import * as SheetPrimitive from "@radix-ui/react-dialog";
 import * as React from "react";
