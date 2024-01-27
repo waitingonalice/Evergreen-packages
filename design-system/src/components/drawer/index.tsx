@@ -11,8 +11,6 @@ import { Text } from "../text";
 
 const Sheet = SheetPrimitive.Root;
 
-const SheetClose = SheetPrimitive.Close;
-
 const SheetPortal = SheetPrimitive.Portal;
 
 const SheetOverlay = React.forwardRef<
@@ -153,9 +151,7 @@ export function Drawer({
         <div className="my-4">{content}</div>
         <SheetFooter>
           {actionButtons?.map((button, index) => (
-            <SheetClose key={index}>
-              <Button {...button} />
-            </SheetClose>
+            <Button {...button} key={index} />
           ))}
         </SheetFooter>
       </SheetContent>
