@@ -7,3 +7,4 @@ export * from "./switch";
 export * from "./progress";
 export * from "./link";
 export * from "./form";
+export * from "./drawer";
