@@ -8,3 +8,4 @@ export * from "./progress";
 export * from "./link";
 export * from "./form";
 export * from "./drawer";
+export * from "./input";
