@@ -111,7 +111,7 @@ const SheetTitle = ({ children }: { children: React.ReactNode }) => (
 );
 
 const SheetDescription = ({ children }: { children: React.ReactNode }) => (
-  <Text type="body" className="text-dark">
+  <Text type="body" className="text-secondary-4">
     {children}
   </Text>
 );
