@@ -1,3 +1,6 @@
+import { withError, withLabel } from "../../hoc";
+import { Input } from "../input";
+
 interface FormProps {
   children: React.ReactNode;
   className?: string;
@@ -25,3 +28,5 @@ export const Form = ({
     </form>
   );
 };
+
+export const FormInput = withError(withLabel(Input));
