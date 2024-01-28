@@ -4,7 +4,7 @@ import { ErrorProps } from "../../hoc";
 import { cn } from "../../utils/cn";
 
 export interface InputProps extends ErrorProps {
-  id: string;
+  id?: string;
   placeholder?: string;
   value?: string;
   className?: string;
