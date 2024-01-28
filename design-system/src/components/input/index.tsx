@@ -1,5 +1,4 @@
 import { forwardRef, useState } from "react";
-import clsx from "clsx";
 import { Eye, EyeOff } from "lucide-react";
 import { ErrorProps } from "../../hoc";
 import { cn } from "../../utils/cn";
@@ -54,42 +53,41 @@ export const Input = forwardRef(
     };
 
     return (
-      <div className={className}>
-        <div
+      <div
+        className={cn(
+          "flex items-center",
+          "rounded-md shadow-sm ring-primary-dark border border-gray-3 transition-all duration-100",
+          isFocused && "ring-2 ring-offset-2",
+          showError && "ring-error-main border-error-main"
+        )}
+      >
+        {prefixIcon && (
+          <div className="items-center flex ml-3">{prefixIcon}</div>
+        )}
+        <input
+          disabled={disabled}
+          ref={ref}
+          type={isPassword && !isPasswordVisible ? "password" : "text"}
+          id={id}
           className={cn(
-            "flex items-center",
-            "rounded-md shadow-sm ring-primary-dark border border-gray-3 transition-all duration-100",
-            isFocused && "ring-2 ring-offset-2",
-            showError && "ring-error-main border-error-main"
+            size === "small" ? "py-1" : "py-2",
+            "!ring-0 border-none rounded-md w-full placeholder-gray-1 disabled:bg-gray-2 disabled:cursor-not-allowed",
+            className
           )}
-        >
-          {prefixIcon && (
-            <div className="items-center flex ml-3">{prefixIcon}</div>
-          )}
-          <input
-            disabled={disabled}
-            ref={ref}
-            type={isPassword && !isPasswordVisible ? "password" : "text"}
-            id={id}
-            className={clsx(
-              size === "small" ? "py-1" : "py-2",
-              "!ring-0 border-none rounded-md w-full placeholder-gray-1 disabled:bg-gray-2 disabled:cursor-not-allowed"
-            )}
-            placeholder={placeholder}
-            value={value}
-            onBlur={handleOnBlur}
-            onChange={handleOnChange}
-            onFocus={handleFocus}
+          placeholder={placeholder}
+          value={value}
+          onBlur={handleOnBlur}
+          onChange={handleOnChange}
+          onFocus={handleFocus}
+        />
+        {isPassword && (
+          <Icon
+            className="text-secondary-4 h-5 w-5 mr-3"
+            role="button"
+            tabIndex={0}
+            onClick={handleVisibilityClick}
           />
-          {isPassword && (
-            <Icon
-              className="text-secondary-4 h-5 w-5 mr-3"
-              role="button"
-              tabIndex={0}
-              onClick={handleVisibilityClick}
-            />
-          )}
-        </div>
+        )}
       </div>
     );
   }

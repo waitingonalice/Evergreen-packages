@@ -55,6 +55,13 @@ Error.args = {
   showError: true,
 };
 
+export const SmallInput = Template.bind({});
+SmallInput.args = {
+  id: "input",
+  placeholder: "Placeholder",
+  size: "small",
+};
+
 export const WithPrefixIcon = Template.bind({});
 WithPrefixIcon.args = {
   id: "input",
