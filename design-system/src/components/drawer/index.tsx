@@ -123,6 +123,7 @@ interface DrawerProps {
   content?: React.ReactNode;
   direction?: VariantProps<typeof sheetVariants>["direction"];
   onClose: () => void;
+  className?: string;
 }
 export function Drawer({
   open,
@@ -133,11 +134,13 @@ export function Drawer({
   description,
   content,
   direction,
+  className,
 }: DrawerProps) {
   return (
     <Sheet open={open}>
       <Button {...triggerButton} />
       <SheetContent
+        className={className}
         direction={direction}
         onInteractOutside={onClose}
         onClickClose={onClose}
