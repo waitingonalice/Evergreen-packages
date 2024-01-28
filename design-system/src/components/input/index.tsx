@@ -9,8 +9,8 @@ export interface InputProps extends ErrorProps {
   value?: string;
   className?: string;
   disabled?: boolean;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onChange: (val: string, e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (val: string, e: React.ChangeEvent<HTMLInputElement>) => void;
   isPassword?: boolean;
   prefixIcon?: React.ReactNode;
   size?: "small" | "default";
@@ -40,11 +40,11 @@ export const Input = forwardRef(
     };
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (onChange) onChange(e);
+      if (onChange) onChange(e.target.value, e);
     };
 
     const handleOnBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-      onBlur?.(e);
+      onBlur?.(e.target.value, e);
       setIsFocused(false);
     };
 
