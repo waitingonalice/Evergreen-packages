@@ -1,12 +1,12 @@
 import { forwardRef, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import { ErrorProps } from "../../hoc";
 import { cn } from "../../utils/cn";
+import { ErrorProps } from "../error";
 
 export interface InputProps extends ErrorProps {
   id?: string;
   placeholder?: string;
-  value?: string;
+  value: string;
   className?: string;
   disabled?: boolean;
   onChange: (val: string, e: React.ChangeEvent<HTMLInputElement>) => void;
