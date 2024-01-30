@@ -1,5 +1,7 @@
-import { withError, withLabel } from "../../hoc";
-import { Input } from "../input";
+import { forwardRef } from "react";
+import { ErrorMessage, ErrorProps } from "../error";
+import { Input, InputProps } from "../input";
+import { Label, LabelProps } from "../label";
 
 interface FormProps {
   children: React.ReactNode;
@@ -29,4 +31,21 @@ export const Form = ({
   );
 };
 
-export const FormInput = withError(withLabel(Input));
+export const FormInput = forwardRef(
+  (
+    props: InputProps & LabelProps & ErrorProps,
+    ref: React.Ref<HTMLInputElement>
+  ) => {
+    const { showError, errorMessage, label } = props;
+
+    return (
+      <div className="flex flex-col gap-y-1">
+        {label && <Label {...props} />}
+        <Input {...props} ref={ref} />
+        {showError && <ErrorMessage errorMessage={errorMessage} />}
+      </div>
+    );
+  }
+);
+
+FormInput.displayName = "FormInput";

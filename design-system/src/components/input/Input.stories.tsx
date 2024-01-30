@@ -11,8 +11,8 @@ export default meta;
 
 export const Component = () => {
   const [value, setValue] = useState("");
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+  const handleChange = (value: string) => {
+    setValue(value);
   };
   return (
     <Input
@@ -71,14 +71,14 @@ WithPrefixIcon.args = {
 
 export const WithLabel = () => {
   const [value, setValue] = useState("");
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+  const handleChange = (val: string) => {
+    setValue(val);
   };
   return (
     <FormInput
       id="input"
-      title="Input"
-      subTitle="Sub title"
+      label="Input"
+      subLabel="Sub title"
       required
       placeholder="Placeholder"
       value={value}
@@ -89,13 +89,13 @@ export const WithLabel = () => {
 
 export const withError = () => {
   const [value, setValue] = useState("");
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+  const handleChange = (val: string) => {
+    setValue(val);
   };
   return (
     <FormInput
       id="input"
-      title="Input"
+      label="Input"
       required
       placeholder="Placeholder"
       value={value}
