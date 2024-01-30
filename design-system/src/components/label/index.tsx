@@ -16,7 +16,7 @@ export const Label = ({
   required,
   className,
 }: LabelProps) => (
-  <span className={clsx("flex flex-col mb-1", className)}>
+  <span className={clsx({ "mb-1": Boolean(subLabel) }, className)}>
     <label htmlFor={id} className="text-secondary-5 flex gap-x-1">
       <Text type="body">{label}</Text>
       {required ? <span className="text-error-main">*</span> : null}
