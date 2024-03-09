@@ -5,8 +5,8 @@ import type { ZodEffects, ZodObject, ZodSchema } from "zod";
 import { findKey } from "../../utils";
 
 interface UseFormType<T> {
-  zod: ZodObject<any> | ZodEffects<ZodObject<any>>;
   data: T;
+  zod: ZodObject<any> | ZodEffects<ZodObject<any>>;
 }
 export type Error<T> = Record<keyof T, string>;
 /**
