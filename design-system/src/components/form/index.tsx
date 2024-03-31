@@ -9,8 +9,7 @@ interface FormProps {
   onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
   autocomplete?: "on" | "off";
 }
-
-export const Form = ({
+const Form = ({
   children,
   className,
   onSubmit,
@@ -31,9 +30,14 @@ export const Form = ({
   );
 };
 
-export const FormWrapper = (
-  props: LabelProps & ErrorProps & { children: JSX.Element }
-) => {
+interface FormComponentWrapperProps extends LabelProps, ErrorProps {
+  children: JSX.Element;
+  className?: string;
+}
+
+type FormComponentProps = Omit<FormComponentWrapperProps, "children">;
+
+const FormWrapper = (props: FormComponentWrapperProps) => {
   const { showError, errorMessage, label, children } = props;
 
   return (
@@ -47,7 +51,7 @@ export const FormWrapper = (
 
 const FormInput = forwardRef(
   (
-    props: InputProps & LabelProps & ErrorProps,
+    props: InputProps & FormComponentProps,
     ref: React.Ref<HTMLInputElement>
   ) => (
     <FormWrapper {...props}>
@@ -57,4 +61,4 @@ const FormInput = forwardRef(
 );
 FormInput.displayName = "FormInput";
 
-export { FormInput };
+export { FormInput, FormWrapper, Form };

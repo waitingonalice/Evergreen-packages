@@ -21,7 +21,7 @@
   "registry": "https://registry.npmjs.org",
   "repository": "https://github.com/waitingonalice/Evergreen-packages/tree/main/design-system",
   "scripts": {
-    "dev": "storybook dev -p 8000",
+    "dev": "storybook dev -p 6006",
     "build": "yarn compile && yarn post:compile",
     "compile": "rm -rf ./build && rollup -c --bundleConfigAsCjs",
     "post:compile": "node ./scripts/generatePackage.js",
@@ -31,16 +31,17 @@
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-progress": "^1.0.3",
+    "@radix-ui/react-slider": "^1.1.2",
     "@radix-ui/react-switch": "^1.0.3",
     "@radix-ui/react-toast": "^1.1.5",
+    "@tailwindcss/forms": "^0.5.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "lucide-react": "^0.303.0",
     "react-resizable-panels": "^1.0.5",
     "tailwind-merge": "^2.2.0",
-    "zod": "^3.22.4",
     "tailwindcss-animate": "^1.0.7",
-    "@tailwindcss/forms": "^0.5.7"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",

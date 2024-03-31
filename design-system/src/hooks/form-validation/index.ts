@@ -1,24 +1,31 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /* eslint-disable no-underscore-dangle */
 import { useState } from "react";
 import isNumber from "lodash/isNumber";
 import type { ZodEffects, ZodObject, ZodSchema } from "zod";
 import { findKey } from "../../utils";
 
+let submitted = false;
+
 interface UseFormType<T> {
   data: T;
   zod: ZodObject<any> | ZodEffects<ZodObject<any>>;
+  validationType?: "onSubmit" | "onChange";
 }
 export type Error<T> = Record<keyof T, string>;
 /**
  * @param options - options object
  * @param options.zod - zod schema to be used for validation
  * @param options.data - data to be validated
+ * @param options.validationType - type of validation to be used. Default is "onSubmit"
  *
  * @description useForm is a custom hook that uses zod to validate form data. The property names of the data object must match the property names of the zod schema.
  */
 export const useForm = <T extends Record<string, any>>({
   zod,
   data,
+  validationType = "onSubmit",
 }: UseFormType<T>) => {
   const emptyErrorState = {} as Error<T>;
   const [errors, setErrors] = useState<Error<T>>(emptyErrorState);
@@ -74,8 +81,8 @@ export const useForm = <T extends Record<string, any>>({
      * @params id - the id of the element to be validated
      * @params value - the value of the element to be validated
      */
-    validate: (id: keyof T | string, value: string) => {
-      if (!zod) return "";
+    validate(id: keyof T | string, value: string) {
+      if (!zod || (validationType === "onSubmit" && !submitted)) return "";
       const checkValue = isNumber(value) ? Number(value) : value ?? "";
       const singleSchema = subsetSchema(id as string);
       const result = singleSchema.safeParse({
@@ -93,7 +100,8 @@ export const useForm = <T extends Record<string, any>>({
       return "";
     },
 
-    onSubmitValidate<P extends ZodSchema>(customSchema?: P) {
+    onSubmit<P extends ZodSchema>(customSchema?: P) {
+      submitted = true;
       const result = customSchema
         ? customSchema.safeParse(data)
         : zod.safeParse(data);
@@ -108,6 +116,7 @@ export const useForm = <T extends Record<string, any>>({
         setErrors(submissionErrors);
         return result.success;
       }
+      setErrors(emptyErrorState);
       return result.success;
     },
 
