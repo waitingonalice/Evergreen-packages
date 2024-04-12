@@ -1,5 +1,6 @@
 import { Meta } from "@storybook/react";
 import React from "react";
+import { FormNativeSelect, FormNativeSelectProps } from "..";
 import { NativeSelect, NativeSelectProps } from ".";
 
 const meta: Meta<typeof NativeSelect> = {
@@ -41,4 +42,23 @@ export const Error = Template.bind({});
 Error.args = {
   ...Default.args,
   error: true,
+};
+
+const FormTemplate = (args: FormNativeSelectProps) => (
+  <FormNativeSelect {...args} />
+);
+
+export const WithLabel = FormTemplate.bind({});
+WithLabel.args = {
+  ...Default.args,
+  id: "form",
+  label: "Label",
+  subLabel: "Sub label",
+};
+
+export const WithError = FormTemplate.bind({});
+WithError.args = {
+  ...Default.args,
+  showError: true,
+  errorMessage: "This field is required",
 };

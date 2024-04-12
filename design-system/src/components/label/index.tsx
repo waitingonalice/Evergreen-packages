@@ -6,17 +6,10 @@ export interface LabelProps {
   label?: string;
   subLabel?: string;
   required?: boolean;
-  className?: string;
 }
 
-export const Label = ({
-  label,
-  subLabel,
-  id,
-  required,
-  className,
-}: LabelProps) => (
-  <span className={cn({ "mb-1": Boolean(subLabel) }, className)}>
+export const Label = ({ label, subLabel, id, required }: LabelProps) => (
+  <span className={cn({ "mb-1": Boolean(subLabel) })}>
     <label htmlFor={id} className="text-secondary-5 flex gap-x-1">
       <Text type="body">{label}</Text>
       {required ? <span className="text-error-main">*</span> : null}

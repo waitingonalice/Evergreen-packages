@@ -1,12 +1,13 @@
 import { Ref, forwardRef } from "react";
 import { cn } from "../../utils";
+import { ErrorProps } from "../error";
 
 export interface BaseOption {
   label: string;
   value: string;
 }
 
-export interface NativeSelectProps {
+export interface NativeSelectProps extends ErrorProps {
   id?: string;
   options: BaseOption[];
   disabled?: boolean;
@@ -16,7 +17,6 @@ export interface NativeSelectProps {
   value?: string | number;
   size?: "small" | "default";
   multiple?: boolean;
-  error?: boolean;
 }
 
 const NativeSelect = forwardRef(
@@ -25,7 +25,7 @@ const NativeSelect = forwardRef(
       id,
       disabled,
       placeholder,
-      error,
+      showError,
       className,
       onChange,
       options,
@@ -47,7 +47,7 @@ const NativeSelect = forwardRef(
         className={cn(
           size === "small" ? "py-1" : "py-2",
           "outline-none disabled:text-gray-3 block w-full rounded-md border border-gray-3  transition-all duration-100 focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed ",
-          error
+          showError
             ? "focus:ring-error-main pr-10 text-error-main focus:border-error-main border-error-main"
             : "focus:ring-primary-dark text-secondary-5 focus:border-gray-3",
           placeholder && !value && "text-gray-3",

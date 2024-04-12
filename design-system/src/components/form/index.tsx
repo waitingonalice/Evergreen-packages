@@ -1,7 +1,8 @@
 import { forwardRef } from "react";
+import { cn } from "../../utils";
 import { ErrorMessage, ErrorProps } from "../error";
 import { Label, LabelProps } from "../label";
-import { Input, InputProps } from "..";
+import { Input, InputProps, NativeSelect, NativeSelectProps } from "..";
 
 interface FormProps {
   children: React.ReactNode;
@@ -35,13 +36,11 @@ interface FormComponentWrapperProps extends LabelProps, ErrorProps {
   className?: string;
 }
 
-type FormComponentProps = Omit<FormComponentWrapperProps, "children">;
-
 const FormWrapper = (props: FormComponentWrapperProps) => {
-  const { showError, errorMessage, label, children } = props;
+  const { showError, errorMessage, label, children, className } = props;
 
   return (
-    <div className="flex flex-col gap-y-1">
+    <div className={cn("flex flex-col gap-y-1 w-full", className)}>
       {label && <Label {...props} />}
       {children}
       {showError && <ErrorMessage errorMessage={errorMessage} />}
@@ -49,16 +48,32 @@ const FormWrapper = (props: FormComponentWrapperProps) => {
   );
 };
 
+type FormComponentProps = Omit<FormComponentWrapperProps, "children">;
+
+export type FormInputProps = InputProps & FormComponentProps;
 const FormInput = forwardRef(
-  (
-    props: InputProps & FormComponentProps,
-    ref: React.Ref<HTMLInputElement>
-  ) => (
-    <FormWrapper {...props}>
-      <Input {...props} ref={ref} />
-    </FormWrapper>
-  )
+  (props: FormInputProps, ref: React.Ref<HTMLInputElement>) => {
+    const { className, ...rest } = props;
+    return (
+      <FormWrapper {...rest} className={className}>
+        <Input {...rest} ref={ref} />
+      </FormWrapper>
+    );
+  }
 );
 FormInput.displayName = "FormInput";
 
-export { FormInput, FormWrapper, Form };
+export type FormNativeSelectProps = NativeSelectProps & FormComponentProps;
+const FormNativeSelect = forwardRef(
+  (props: FormNativeSelectProps, ref: React.Ref<HTMLSelectElement>) => {
+    const { className, ...rest } = props;
+    return (
+      <FormWrapper {...rest} className={className}>
+        <NativeSelect {...rest} ref={ref} />
+      </FormWrapper>
+    );
+  }
+);
+FormNativeSelect.displayName = "FormNativeSelect";
+
+export { FormInput, FormNativeSelect, FormWrapper, Form };
