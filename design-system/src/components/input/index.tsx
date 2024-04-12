@@ -73,7 +73,7 @@ export const Input = forwardRef(
           id={id}
           className={cn(
             size === "small" ? "py-1" : "py-2",
-            "!ring-0 border-none rounded-md w-full placeholder-gray-1 disabled:bg-gray-2 disabled:cursor-not-allowed",
+            "!ring-0 border-none rounded-md w-full placeholder-gray-3 disabled:bg-gray-2 disabled:cursor-not-allowed",
             className
           )}
           placeholder={placeholder}
