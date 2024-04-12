@@ -14,6 +14,7 @@ export interface InputProps extends ErrorProps {
   isPassword?: boolean;
   prefixIcon?: React.ReactNode;
   size?: "small" | "default";
+  autoComplete?: string;
 }
 
 export const Input = forwardRef(
@@ -30,6 +31,7 @@ export const Input = forwardRef(
       prefixIcon,
       size = "default",
       showError,
+      autoComplete,
     } = props;
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
@@ -79,6 +81,7 @@ export const Input = forwardRef(
           onBlur={handleOnBlur}
           onChange={handleOnChange}
           onFocus={handleFocus}
+          autoComplete={autoComplete}
         />
         {isPassword && (
           <Icon
