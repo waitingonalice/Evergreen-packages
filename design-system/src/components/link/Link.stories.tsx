@@ -16,6 +16,16 @@ const Template = (args: LinkProps) => (
   </Grid>
 );
 
+export const Primary = Template.bind({});
+Primary.args = {
+  variant: "primary",
+};
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+  variant: "secondary",
+};
+
 export const PrimaryLink = Template.bind({});
 PrimaryLink.args = {
   variant: "primaryLink",

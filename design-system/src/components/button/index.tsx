@@ -38,7 +38,7 @@ export const Button = ({
 
   const variantMapper = {
     primary: clsx(
-      "shadow-primary-light/40 bg-primary-main hover:enabled:bg-primary-light text-secondary-1 active:enabled:bg-primary-dark active:enabled:ring-primary-light",
+      "shadow-primary-light/40 bg-primary-main hover:enabled:bg-primary-dark text-secondary-1 active:enabled:bg-primary-light active:enabled:ring-primary-light",
       baseStyleButton
     ),
     secondary: clsx(
