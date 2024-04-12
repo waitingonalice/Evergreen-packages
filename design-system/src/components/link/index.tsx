@@ -19,7 +19,7 @@ export const Link = ({
   size,
 }: LinkProps) => {
   const baseStyle =
-    "whitespace-nowrap transition-all duration-100 disabled:cursor-not-allowed disabled:opacity-30 text-[14px] font-medium tracking-[0.0125em] flex justify-center items-center gap-x-1";
+    "hover:cursor-pointer whitespace-nowrap transition-all duration-100 disabled:cursor-not-allowed disabled:opacity-30 text-[14px] font-medium tracking-[0.0125em] flex justify-center items-center gap-x-1";
 
   const baseStyleButton = cn(
     "first-letter:focus:outline-none shadow-sm rounded-md active:ring-2 active:ring-offset-1",
