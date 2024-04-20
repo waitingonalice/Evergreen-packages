@@ -59,11 +59,11 @@ const Toast = ({
 
   const baseIconStyle = "h-5 w-5 shrink-0 mt-1";
   const positionMap: Record<NonNullable<ToastInterface["position"]>, string> = {
-    center: "top-4 left-1/2 -translate-x-1/2",
-    "top-left": "top-4 left-4",
-    "top-right": "top-4 right-4",
-    "bottom-right": "bottom-4 right-4",
-    "bottom-left": "bottom-4 left-4",
+    center: "top-4 left-1/2 -translate-x-1/2 ",
+    "top-left": "top-4 sm:left-4 left-0",
+    "top-right": "top-4 sm:right-4 right-0",
+    "bottom-right": "bottom-4 sm:right-4 right-0",
+    "bottom-left": "bottom-4 sm:left-4 left-0",
   };
 
   const backgroundMap: Record<
@@ -110,7 +110,8 @@ const Toast = ({
     <Animate show={showToast}>
       <div
         className={cn(
-          "flex flex-col border rounded-md shadow-md p-4 w-full sm:w-96",
+          "sm:w-96 sm:p-4",
+          "flex flex-col border rounded-md shadow-md p-2 w-full",
           "fixed z-[100]",
           "transition-all duration-150",
           backgroundMap[variant],

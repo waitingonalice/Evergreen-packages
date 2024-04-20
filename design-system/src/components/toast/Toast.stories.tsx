@@ -45,6 +45,7 @@ export const Demo = () => {
       show: true,
       key: uuid(),
       variant: "success",
+      noDuration: true,
     });
   };
   const handleTriggerToast1 = () => {
