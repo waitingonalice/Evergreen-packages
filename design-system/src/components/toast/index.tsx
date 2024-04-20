@@ -134,7 +134,7 @@ const Toast = ({
 
         {description && (
           <div className="mt-1 mx-7">
-            <Text type="body-bold">{description}</Text>
+            <Text type="body">{description}</Text>
           </div>
         )}
       </div>
