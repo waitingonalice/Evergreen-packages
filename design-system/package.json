@@ -1,6 +1,6 @@
 {
   "name": "@waitingonalice/design-system",
-  "version": "1.2.32",
+  "version": "1.2.33",
   "author": "waitingonalice",
   "description": "A design system that uses tailwindcss and react",
   "license": "MIT",
