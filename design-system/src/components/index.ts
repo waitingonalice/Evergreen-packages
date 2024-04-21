@@ -17,3 +17,4 @@ export * from "./error";
 export * from "./checkbox";
 export * from "./animate";
 export * from "./dialog";
+export * from "./radio";
