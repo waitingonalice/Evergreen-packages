@@ -57,22 +57,13 @@ const Toast = ({
     return () => clearTimeout(timer);
   }, [showToast]);
 
-  const baseIconStyle = "h-5 w-5 shrink-0 mt-1";
+  const baseIconStyle = "h-5 w-5 shrink-0 mt-0.5";
   const positionMap: Record<NonNullable<ToastInterface["position"]>, string> = {
     center: "top-4 left-1/2 -translate-x-1/2 ",
     "top-left": "top-4 sm:left-4 left-0",
     "top-right": "top-4 sm:right-4 right-0",
     "bottom-right": "bottom-4 sm:right-4 right-0",
     "bottom-left": "bottom-4 sm:left-4 left-0",
-  };
-
-  const backgroundMap: Record<
-    NonNullable<ToastInterface["variant"]>,
-    string
-  > = {
-    success: "bg-success-light",
-    warning: "bg-warning-light",
-    error: "bg-error-light",
   };
 
   const animateMap: Record<NonNullable<ToastInterface["position"]>, string> = {
@@ -111,10 +102,9 @@ const Toast = ({
       <div
         className={cn(
           "sm:w-96 sm:p-4",
-          "flex flex-col border rounded-md shadow-md p-2 w-full",
+          "flex flex-col border rounded-md shadow-md p-2 w-full bg-white",
           "fixed z-[100]",
           "transition-all duration-150",
-          backgroundMap[variant],
           positionMap[position],
           animateMap[position],
           className
