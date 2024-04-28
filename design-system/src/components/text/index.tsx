@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-interface TextProps {
+export interface TextProps {
   type:
     | "h1"
     | "h2"
