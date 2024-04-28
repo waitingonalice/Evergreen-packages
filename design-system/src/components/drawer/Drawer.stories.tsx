@@ -1,5 +1,6 @@
 import { Meta } from "@storybook/react";
 import React, { useState } from "react";
+import { Button } from "../button";
 import { Drawer } from ".";
 
 const meta: Meta<typeof Drawer> = {
@@ -17,24 +18,23 @@ export const Component = () => {
     setOpen(true);
   };
   return (
-    <Drawer
-      open={open}
-      title="This is the title"
-      description="This is the description"
-      content={<input className="w-full" />}
-      onClose={handleClose}
-      triggerButton={{
-        children: "Open Drawer",
-        onClick: handleOpen,
-      }}
-      actionButtons={[
-        {
-          children: "Cancel",
-          variant: "secondary",
-          onClick: handleClose,
-        },
-        { children: "Save", onClick: handleClose },
-      ]}
-    />
+    <>
+      <Button onClick={handleOpen}>Open Drawer</Button>
+      <Drawer
+        open={open}
+        title="This is the title"
+        description="This is the description"
+        content={<input className="w-full" />}
+        onClose={handleClose}
+        actionButtons={[
+          {
+            children: "Cancel",
+            variant: "secondary",
+            onClick: handleClose,
+          },
+          { children: "Save", onClick: handleClose },
+        ]}
+      />
+    </>
   );
 };

@@ -116,7 +116,6 @@ const SheetDescription = ({ children }: { children: React.ReactNode }) => (
 
 interface DrawerProps {
   actionButtons?: ButtonProps[];
-  triggerButton: ButtonProps;
   open?: boolean;
   title?: string;
   description?: string;
@@ -127,7 +126,6 @@ interface DrawerProps {
 }
 export function Drawer({
   open,
-  triggerButton,
   actionButtons,
   onClose,
   title,
@@ -138,7 +136,6 @@ export function Drawer({
 }: DrawerProps) {
   return (
     <Sheet open={open}>
-      <Button {...triggerButton} />
       <SheetContent
         className={className}
         direction={direction}
