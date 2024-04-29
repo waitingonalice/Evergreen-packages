@@ -77,9 +77,9 @@ const DialogContent = React.forwardRef<
           {onClose && (
             <Button
               onClick={onClose}
-              className="absolute right-4 top-4 rounded-sm opacity-70  transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-primary-1 focus:ring-offset-2 disabled:pointer-events-none"
+              className="absolute right-4 top-4 rounded-sm opacity-70  transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-primary-main focus:ring-offset-2 disabled:pointer-events-none"
             >
-              <X className="h-4 w-4" />
+              <X className="h-4 w-4 " />
               <span className="sr-only">Close</span>
             </Button>
           )}
@@ -108,7 +108,7 @@ const DialogFooter = ({ children, className }: DialogFooterProps) => (
   </span>
 );
 
-interface DialogProps extends DialogContentProps {
+export interface DialogProps extends DialogContentProps {
   open: boolean;
   contentChildren?: React.ReactNode;
   leftFooterChildren?: React.ReactNode;
@@ -137,7 +137,7 @@ export const Dialog = ({
         disableInteractOutside={disableInteractOutside}
       >
         <DialogHeader>
-          <Text type="subhead-2" className="text-secondary-5">
+          <Text type="subhead-2-bold" className="text-secondary-5">
             {title}
           </Text>
           <div>{contentChildren}</div>
