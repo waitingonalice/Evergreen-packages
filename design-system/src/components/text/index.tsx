@@ -28,12 +28,12 @@ export const Text = ({ type, children, className }: TextProps) => {
     "subhead-1": "text-[24px] font-medium tracking-[0.0025em]",
     "subhead-1-bold": "text-[24px] font-bold tracking-[0.0025em]",
     "subhead-2": "text-[16px] font-light tracking-normal",
-    "subhead-2-bold": "text-[16px] font-semibold tracking-normal",
+    "subhead-2-bold": "text-[16px] font-bold tracking-normal",
     body: "text-[14px] font-normal",
-    "body-bold": "text-[14px] font-semibold",
+    "body-bold": "text-[14px] font-bold",
     button: "text-[14px] font-medium tracking-[0.0125em]",
     caption: "text-[12px] font-medium tracking-[0.004em]",
-    "caption-bold": "text-[12px] font-semibold tracking-[0.004em]",
+    "caption-bold": "text-[12px] font-bold tracking-[0.004em]",
     overline: "text-[12px] font-medium tracking-[0.015em]",
   };
 
