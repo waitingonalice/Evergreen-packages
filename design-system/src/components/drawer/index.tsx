@@ -3,6 +3,7 @@ import * as SheetPrimitive from "@radix-ui/react-dialog";
 import * as React from "react";
 import { type VariantProps, cva } from "class-variance-authority";
 import { X } from "lucide-react";
+import { BaseProps } from "../../types";
 import { cn } from "../../utils";
 import { Button, ButtonProps } from "../button";
 import { Text } from "../text";
@@ -25,6 +26,7 @@ const SheetOverlay = React.forwardRef<
   />
 ));
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
+SheetOverlay.propTypes = SheetPrimitive.Overlay.propTypes;
 
 const sheetVariants = cva(
   "fixed z-50 gap-4 bg-white p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
@@ -34,9 +36,9 @@ const sheetVariants = cva(
         top: "inset-x-0 top-0 border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
         bottom:
           "inset-x-0 bottom-0 border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
-        left: "inset-y-0 left-0 h-full w-1/2 border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
+        left: "inset-y-0 left-0 h-full w-full border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
         right:
-          "inset-y-0 right-0 h-full w-1/2  border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm",
+          "inset-y-0 right-0 h-full w-full border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm",
       },
     },
     defaultVariants: {
@@ -74,39 +76,39 @@ const SheetContent = React.forwardRef<
 ));
 SheetContent.displayName = SheetPrimitive.Content.displayName;
 
-const SheetHeader = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+interface SheetProps extends BaseProps {
+  children: React.ReactNode;
+}
+const SheetHeader = ({ className, children }: SheetProps) => (
   <div
-    className={cn("flex flex-col space-y-2 sm:text-left", className)}
-    {...props}
-  />
+    className={cn(
+      "flex flex-col space-y-2 sm:text-left border-b-2 pb-2",
+      className
+    )}
+  >
+    {children}
+  </div>
 );
-SheetHeader.displayName = "SheetHeader";
 
-const SheetFooter = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+const SheetFooter = ({ className, children }: SheetProps) => (
   <div
     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
       className
     )}
-    {...props}
-  />
+  >
+    {children}
+  </div>
 );
-SheetFooter.displayName = "SheetFooter";
 
 const SheetTitle = ({ children }: { children: React.ReactNode }) => (
-  <Text type="subhead-2-bold" className="text-dark">
+  <Text type="subhead-2" className="text-secondary-5">
     {children}
   </Text>
 );
 
 const SheetDescription = ({ children }: { children: React.ReactNode }) => (
-  <Text type="body" className="text-secondary-4">
+  <Text type="caption" className="text-gray-3">
     {children}
   </Text>
 );
@@ -116,7 +118,7 @@ interface DrawerProps {
   open?: boolean;
   title?: string;
   description?: string;
-  content?: React.ReactNode;
+  children?: React.ReactNode;
   direction?: VariantProps<typeof sheetVariants>["direction"];
   onClose: () => void;
   className?: string;
@@ -127,7 +129,7 @@ export function Drawer({
   onClose,
   title,
   description,
-  content,
+  children,
   direction,
   className,
 }: DrawerProps) {
@@ -143,7 +145,7 @@ export function Drawer({
           <SheetTitle>{title}</SheetTitle>
           <SheetDescription>{description}</SheetDescription>
         </SheetHeader>
-        <div className="my-4">{content}</div>
+        <div className="my-4">{children}</div>
         <SheetFooter>
           {actionButtons?.map((button, index) => (
             <Button {...button} key={index} />

@@ -42,7 +42,7 @@ export const Button = ({
       baseStyleButton
     ),
     secondary: clsx(
-      "shadow-secondary-1/40 bg-secondary-1 text-primary-main hover:enabled:bg-gray-2 active:enabled:bg-gray-3 active:enabled:ring-primary-light",
+      "shadow-secondary-1/40 bg-secondary-1 text-primary-main hover:bg-secondary-2 active:enabled:ring-primary-light",
       baseStyleButton
     ),
     error: clsx(
