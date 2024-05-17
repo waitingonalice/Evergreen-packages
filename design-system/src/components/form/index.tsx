@@ -2,7 +2,14 @@ import { forwardRef } from "react";
 import { cn } from "../../utils";
 import { ErrorMessage, ErrorProps } from "../error";
 import { Label, LabelProps } from "../label";
-import { Input, InputProps, NativeSelect, NativeSelectProps } from "..";
+import {
+  Input,
+  InputProps,
+  NativeDatePicker,
+  NativeDatePickerProps,
+  NativeSelect,
+  NativeSelectProps,
+} from "..";
 
 interface FormProps {
   children: React.ReactNode;
@@ -76,4 +83,14 @@ const FormNativeSelect = forwardRef(
 );
 FormNativeSelect.displayName = "FormNativeSelect";
 
-export { FormInput, FormNativeSelect, FormWrapper, Form };
+export type FormDatePickerProps = NativeDatePickerProps & FormComponentProps;
+const FormNativeDatePicker = (props: FormDatePickerProps) => {
+  const { className, ...rest } = props;
+  return (
+    <FormWrapper {...rest} className={className}>
+      <NativeDatePicker {...rest} />
+    </FormWrapper>
+  );
+};
+
+export { FormInput, FormNativeSelect, FormNativeDatePicker, FormWrapper, Form };
