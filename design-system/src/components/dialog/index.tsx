@@ -101,7 +101,7 @@ export const Dialog = ({
   open = false,
   onClose,
 }: DialogProps) => {
-  const footerBaseStyle = "space-x-2 flex w-full";
+  const footerBaseStyle = "gap-x-4 flex w-full";
   return (
     <DialogWrapper open={open}>
       <DialogContent

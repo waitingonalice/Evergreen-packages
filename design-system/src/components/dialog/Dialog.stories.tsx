@@ -22,7 +22,17 @@ export const TriggerDialog = () => {
   return (
     <>
       <Button onClick={handleOpenDialog}>Open Dialog</Button>
-      <Dialog open={isOpen} title="Example Dialog" onClose={handleCloseDialog}>
+      <Dialog
+        open={isOpen}
+        title="Example Dialog"
+        onClose={handleCloseDialog}
+        rightFooterChildren={
+          <>
+            <Button variant="primaryLink">Cancel</Button>
+            <Button>Add</Button>
+          </>
+        }
+      >
         test
       </Dialog>
     </>
