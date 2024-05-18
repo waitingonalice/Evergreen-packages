@@ -55,9 +55,9 @@ export const Input = forwardRef(
     };
 
     return (
-      <div
+      <span
         className={cn(
-          "flex items-center",
+          "flex items-center w-full justify-between",
           "rounded-md shadow-sm ring-primary-dark border border-gray-3 transition-all duration-100",
           isFocused && "ring-2 ring-offset-2",
           showError && "ring-error-main border-error-main"
@@ -91,7 +91,7 @@ export const Input = forwardRef(
             onClick={handleVisibilityClick}
           />
         )}
-      </div>
+      </span>
     );
   }
 );
