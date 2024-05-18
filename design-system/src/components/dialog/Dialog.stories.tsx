@@ -22,12 +22,9 @@ export const TriggerDialog = () => {
   return (
     <>
       <Button onClick={handleOpenDialog}>Open Dialog</Button>
-      <Dialog
-        open={isOpen}
-        title="Example Dialog"
-        contentChildren="This is an example dialog."
-        onClose={handleCloseDialog}
-      />
+      <Dialog open={isOpen} title="Example Dialog" onClose={handleCloseDialog}>
+        test
+      </Dialog>
     </>
   );
 };

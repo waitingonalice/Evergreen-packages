@@ -71,14 +71,8 @@ const DialogContent = React.forwardRef<
 });
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
-interface DialogBodyProps {
+interface DialogFooterProps {
   children: React.ReactNode;
-}
-const DialogHeader = ({ children }: DialogBodyProps) => (
-  <div className={cn("flex flex-col space-y-4")}>{children}</div>
-);
-
-interface DialogFooterProps extends DialogBodyProps {
   className?: string;
 }
 const DialogFooter = ({ children, className }: DialogFooterProps) => (
@@ -91,14 +85,14 @@ const DialogFooter = ({ children, className }: DialogFooterProps) => (
 
 export interface DialogProps extends DialogContentProps {
   open: boolean;
-  contentChildren?: React.ReactNode;
+  children?: React.ReactNode;
   leftFooterChildren?: React.ReactNode;
   rightFooterChildren?: React.ReactNode;
   title?: string;
   className?: string;
 }
 export const Dialog = ({
-  contentChildren,
+  children,
   leftFooterChildren,
   rightFooterChildren,
   disableInteractOutside,
@@ -115,12 +109,12 @@ export const Dialog = ({
         onClose={onClose}
         disableInteractOutside={disableInteractOutside}
       >
-        <DialogHeader>
+        <div className="flex flex-col space-y-4">
           <Text type="subhead-2-bold" className="text-secondary-5">
             {title}
           </Text>
-          <div>{contentChildren}</div>
-        </DialogHeader>
+          <div>{children}</div>
+        </div>
 
         <DialogFooter>
           {leftFooterChildren && (
