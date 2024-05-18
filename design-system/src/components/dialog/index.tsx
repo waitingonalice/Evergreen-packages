@@ -104,7 +104,6 @@ export const Dialog = ({
   disableInteractOutside,
   title,
   className,
-  size,
   open = false,
   onClose,
 }: DialogProps) => {
@@ -114,7 +113,6 @@ export const Dialog = ({
       <DialogContent
         className={className}
         onClose={onClose}
-        size={size}
         disableInteractOutside={disableInteractOutside}
       >
         <DialogHeader>
