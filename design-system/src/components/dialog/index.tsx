@@ -113,7 +113,7 @@ export const Dialog = ({
           <Text type="subhead-2-bold" className="text-secondary-5">
             {title}
           </Text>
-          <div>{children}</div>
+          <div className="sm:h-96 overflow-auto px-1">{children}</div>
         </div>
 
         <DialogFooter>
