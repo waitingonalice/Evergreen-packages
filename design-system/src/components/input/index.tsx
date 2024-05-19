@@ -17,7 +17,7 @@ export interface InputProps extends ErrorProps {
   prefixIcon?: React.ReactNode;
   size?: "small" | "default";
   autoComplete?: string;
-  as: "textarea" | "input";
+  as?: "textarea" | "input";
 }
 
 export const Input = forwardRef((props: InputProps, ref: React.Ref<any>) => {
