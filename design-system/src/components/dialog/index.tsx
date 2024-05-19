@@ -109,11 +109,11 @@ export const Dialog = ({
         onClose={onClose}
         disableInteractOutside={disableInteractOutside}
       >
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-4 mb-2">
           <Text type="subhead-2-bold" className="text-secondary-5">
             {title}
           </Text>
-          <div className="sm:max-h-[400px] overflow-auto px-1">{children}</div>
+          <div className="sm:max-h-[480px] overflow-auto px-1">{children}</div>
         </div>
 
         <DialogFooter>
