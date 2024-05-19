@@ -109,7 +109,7 @@ export const Dialog = ({
         onClose={onClose}
         disableInteractOutside={disableInteractOutside}
       >
-        <div className="flex flex-col space-y-4 mb-2">
+        <div className="flex flex-col space-y-4">
           <Text type="subhead-2-bold" className="text-secondary-5">
             {title}
           </Text>
