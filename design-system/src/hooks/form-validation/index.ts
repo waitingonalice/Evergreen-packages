@@ -81,7 +81,7 @@ export const useForm = <T extends Record<string, any>>({
      * @params id - the id of the element to be validated
      * @params value - the value of the element to be validated
      */
-    validate(id: keyof T | string, value: string) {
+    validate(id: keyof T | string, value: T[keyof T]) {
       if (!zod || (validationType === "onSubmit" && !submitted)) return "";
       const checkValue = isNumber(value) ? Number(value) : value ?? "";
       const singleSchema = subsetSchema(id as string);
