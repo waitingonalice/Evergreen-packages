@@ -46,7 +46,7 @@ const NativeSelect = forwardRef(
         ref={ref}
         className={cn(
           size === "small" ? "py-1" : "py-2",
-          "outline-none disabled:text-gray-3 block w-full rounded-md border border-gray-3  transition-all duration-100 focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed ",
+          "outline-none disabled:text-gray-3 block w-full rounded-md border border-gray-3  transition-all duration-100 focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed text-sm",
           showError
             ? "focus:ring-error-main pr-10 text-error-main focus:border-error-main border-error-main"
             : "focus:ring-primary-dark text-secondary-5 focus:border-gray-3",

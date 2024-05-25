@@ -63,7 +63,7 @@ export const Input = forwardRef((props: InputProps, ref: React.Ref<any>) => {
     id,
     className: cn(
       size === "small" ? "py-1" : "py-2",
-      "!ring-0 border-none rounded-md w-full placeholder-gray-3 disabled:bg-gray-2 outline-none disabled:cursor-not-allowed",
+      "!ring-0 border-none rounded-md w-full placeholder-gray-3 disabled:bg-gray-2 outline-none disabled:cursor-not-allowed text-sm",
       className
     ),
     placeholder,
