@@ -118,7 +118,7 @@ export const Dialog = ({
         withOverlay={withOverlay}
       >
         <div className="flex flex-col space-y-4">
-          <Text type="subhead-2" className="text-typography-1">
+          <Text type="subhead-2-bold" className="text-typography-1">
             {title}
           </Text>
           <div>{children}</div>
