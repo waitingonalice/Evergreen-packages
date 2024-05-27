@@ -8,7 +8,7 @@ import { formatTime } from "./utils";
 
 export interface NativeDatePickerProps extends Pick<ErrorProps, "showError"> {
   withTime?: boolean;
-  onChange: (date?: Date) => void;
+  onChange: (date: Date | null) => void;
   value?: Date | null;
   placeholder?: string;
   disabled?: boolean;
@@ -29,7 +29,7 @@ function NativeDatePicker({
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.value) {
-      onChange(undefined);
+      onChange(null);
       return;
     }
     onChange(new Date(e.target.value));

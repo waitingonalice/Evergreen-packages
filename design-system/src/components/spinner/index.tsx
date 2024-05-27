@@ -10,8 +10,17 @@ const Spinner = ({ className }: SpinnerProps) => (
   <div className={cn(style.spinner, className)} />
 );
 
-const SpinnerV2 = ({ className }: SpinnerProps) => (
-  <Loader className={cn("animate-spin h-5 w-5 text-primary-main", className)} />
+interface SpinnerV2Props extends SpinnerProps {
+  lightMode?: boolean;
+}
+const SpinnerV2 = ({ className, lightMode }: SpinnerV2Props) => (
+  <Loader
+    className={cn(
+      "animate-spin h-5 w-5 text-primary-main",
+      lightMode && "text-secondary-1",
+      className
+    )}
+  />
 );
 
 export { Spinner, SpinnerV2 };
