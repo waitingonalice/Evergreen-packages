@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Calendar } from "lucide-react";
+import { useOutsideClick } from "../../hooks/outside-click";
 import { cn } from "../../utils";
 import { ErrorProps } from "../error";
 import { Text } from "../text";
@@ -7,7 +8,7 @@ import { formatTime } from "./utils";
 
 export interface NativeDatePickerProps extends Pick<ErrorProps, "showError"> {
   withTime?: boolean;
-  onChange: (date: Date | null) => void;
+  onChange: (date?: Date) => void;
   value?: Date | null;
   placeholder?: string;
   disabled?: boolean;
@@ -22,10 +23,13 @@ function NativeDatePicker({
 }: NativeDatePickerProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const dateDisplay = formatTime(withTime, value);
+  const [focus, setFocus] = useState(false);
+
+  useOutsideClick(inputRef, () => setFocus(false));
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.value) {
-      onChange(null);
+      onChange(undefined);
       return;
     }
     onChange(new Date(e.target.value));
@@ -33,23 +37,23 @@ function NativeDatePicker({
 
   const handleClick = () => {
     if (disabled) return;
+    setFocus(true);
     inputRef.current?.showPicker();
   };
 
   return (
-    <button
-      disabled={disabled}
-      type="button"
-      aria-label="Open date picker"
+    <div
       className={cn(
-        "focus:outline-none focus:ring-2 focus:ring-primary-main focus:ring-offset-2",
-        "disabled:cursor-not-allowed disabled:bg-gray-2",
-        "whitespace-nowrap transition-all duration-100 w-full flex gap-x-4 relative shadow-sm rounded-md border border-gray-3 px-4 py-2",
-        showError && "focus:ring-error-main border-error-main"
+        "relative w-full",
+        "flex gap-x-2 whitespace-nowrap shadow-sm rounded-md border border-gray-3 px-4 py-2",
+        "transition-all duration-100",
+        focus && "ring-offset-2 ring-primary-main ring-2",
+        disabled && "bg-gray-2",
+        showError && "border-error-main",
+        focus && showError && "ring-error-main"
       )}
-      onClick={handleClick}
     >
-      <Calendar className="w-5 h-5 flex-shrink-0 text-secondary-4" />
+      <Calendar className="w-5 h-5 flex-shrink-0 text-gray-3" />
       <Text
         className={cn(
           "text-secondary-5",
@@ -61,11 +65,15 @@ function NativeDatePicker({
       </Text>
       <input
         ref={inputRef}
-        className="-z-10 absolute top-0 left-0 opacity-0 w-full h-full"
-        onChange={handleOnChange}
+        className={cn(
+          "absolute top-0 left-0 opacity-0 h-full w-full cursor-pointer",
+          disabled && "cursor-not-allowed"
+        )}
         type={withTime ? "datetime-local" : "date"}
+        onChange={handleOnChange}
+        onClick={handleClick}
       />
-    </button>
+    </div>
   );
 }
 

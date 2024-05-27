@@ -9,7 +9,11 @@ const DialogWrapper = DialogPrimitive.Root;
 
 const DialogPortal = DialogPrimitive.Portal;
 
-const DialogOverlay = () => <div className="fixed inset-0 z-40 bg-black/80" />;
+const DialogOverlay = React.forwardRef<
+  React.ElementRef<typeof DialogPrimitive.Overlay>
+>((_, ref) => <div ref={ref} className="fixed inset-0 z-40 bg-black/80" />);
+DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
+DialogOverlay.propTypes = DialogPrimitive.Overlay.propTypes;
 
 interface DialogContentProps
   extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> {

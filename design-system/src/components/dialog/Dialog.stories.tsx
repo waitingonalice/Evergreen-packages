@@ -26,6 +26,7 @@ export const TriggerDialog = () => {
         open={isOpen}
         title="Example Dialog"
         onClose={handleCloseDialog}
+        withOverlay
         rightFooterChildren={
           <>
             <Button variant="primaryLink">Cancel</Button>
