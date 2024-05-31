@@ -19,3 +19,4 @@ export * from "./animate";
 export * from "./dialog";
 export * from "./radio";
 export * from "./datepicker";
+export * from "./table";
