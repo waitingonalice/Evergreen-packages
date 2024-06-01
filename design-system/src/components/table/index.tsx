@@ -70,7 +70,7 @@ export const CheckboxCell = (props: CheckboxCellProps) => {
 
 function Table({ children, className }: TableProps) {
   return (
-    <div className={cn("overflow-auto", className)}>
+    <div className={cn("overflow-auto w-full", className)}>
       <table className="w-full divide-y divide-gray-300 border-y-gray-400 border border-x-0">
         {children}
       </table>
