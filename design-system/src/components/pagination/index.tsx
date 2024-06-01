@@ -203,21 +203,19 @@ export function Pagination({
     onClick(page * currentLimit - currentLimit);
   };
 
-  if (totalCount > 0)
-    return (
-      <nav className={cn("flex items-center justify-between mt-4", className)}>
-        <PaginationWrapper
+  return (
+    <nav className={cn("flex items-center justify-between mt-4", className)}>
+      <PaginationWrapper
+        pages={pages}
+        currentPage={currentPage}
+        onClick={handleOnClick}
+      >
+        <RenderPageButtons
           pages={pages}
           currentPage={currentPage}
           onClick={handleOnClick}
-        >
-          <RenderPageButtons
-            pages={pages}
-            currentPage={currentPage}
-            onClick={handleOnClick}
-          />
-        </PaginationWrapper>
-      </nav>
-    );
-  return null;
+        />
+      </PaginationWrapper>
+    </nav>
+  );
 }
