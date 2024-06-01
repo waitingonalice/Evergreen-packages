@@ -1,6 +1,6 @@
 import { Table } from ".";
 
-interface TableSkeletonProps {
+export interface TableSkeletonProps {
   rows: number;
   columns: { name: string; className?: string }[];
   withCheckbox?: boolean;

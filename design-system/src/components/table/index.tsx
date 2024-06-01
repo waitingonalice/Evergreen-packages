@@ -3,7 +3,7 @@ import React from "react";
 import { cn } from "../../utils";
 import { Checkbox, CheckboxProps } from "../checkbox";
 import { Text } from "../text";
-import { TableSkeleton } from "./Skeleton";
+import { TableSkeleton, TableSkeletonProps } from "./Skeleton";
 
 interface HeaderProps {
   className?: string;
@@ -78,6 +78,27 @@ function Table({ children, className }: TableProps) {
   );
 }
 
+interface EmptyTableProps {
+  columns: TableSkeletonProps["columns"];
+  content?: React.ReactNode;
+}
+function EmptyTable({ columns, content }: EmptyTableProps) {
+  return (
+    <>
+      <Table>
+        <Table.Header>
+          {columns.map((item) => (
+            <Table.Thead key={item.name}>{item.name}</Table.Thead>
+          ))}
+        </Table.Header>
+      </Table>
+      <div className="w-full items-center justify-center h-[400px] flex border-b border-b-gray-400">
+        {content || <Text type="body">No data found</Text>}
+      </div>
+    </>
+  );
+}
+
 Table.Header = Header;
 Table.Thead = Thead;
 Table.CheckboxTH = CheckboxTh;
@@ -86,4 +107,4 @@ Table.Row = Row;
 Table.Cell = Cell;
 Table.CheckboxCell = CheckboxCell;
 
-export { Table, TableSkeleton };
+export { Table, TableSkeleton, EmptyTable };

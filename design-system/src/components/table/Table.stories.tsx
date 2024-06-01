@@ -1,6 +1,6 @@
 import { Meta } from "@storybook/react";
 import React from "react";
-import { Table } from ".";
+import { EmptyTable, Table, TableSkeleton } from ".";
 
 const meta: Meta<typeof Table> = {
   title: "Components/Table",
@@ -29,3 +29,20 @@ export const Component = () => (
     </Table.Body>
   </Table>
 );
+
+export const LoadingState = () => (
+  <TableSkeleton
+    rows={3}
+    columns={[{ name: "Column 1" }, { name: "Column 2" }, { name: "Column 3" }]}
+    withCheckbox
+  />
+);
+
+export const EmptyTableState = () => {
+  const columns = [
+    { name: "Column 1" },
+    { name: "Column 2" },
+    { name: "Column 3" },
+  ];
+  return <EmptyTable columns={columns} content="No records available" />;
+};
