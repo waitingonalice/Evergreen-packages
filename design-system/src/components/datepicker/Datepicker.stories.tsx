@@ -17,8 +17,7 @@ export const Default = () => {
       value={date}
       onChange={handleOnChange}
       placeholder="Select a date"
-      // disabled
-      withTime
+      calenderView="month"
     />
   );
 };

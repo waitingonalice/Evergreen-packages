@@ -7,22 +7,22 @@ import { Text } from "../text";
 import { formatTime } from "./utils";
 
 export interface NativeDatePickerProps extends Pick<ErrorProps, "showError"> {
-  withTime?: boolean;
+  calenderView?: "month" | "date" | "datetime-local";
   onChange: (date: Date | null) => void;
   value?: Date | null;
   placeholder?: string;
   disabled?: boolean;
 }
 function NativeDatePicker({
-  withTime,
   onChange,
   value,
   placeholder,
   disabled,
   showError,
+  calenderView = "date",
 }: NativeDatePickerProps) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const dateDisplay = formatTime(withTime, value);
+  const dateDisplay = formatTime(calenderView === "datetime-local", value);
   const [focus, setFocus] = useState(false);
 
   useOutsideClick(inputRef, () => setFocus(false));
@@ -32,6 +32,7 @@ function NativeDatePicker({
       onChange(null);
       return;
     }
+    console.log(e.target.value);
     onChange(new Date(e.target.value));
   };
 
@@ -69,7 +70,7 @@ function NativeDatePicker({
           "absolute top-0 left-0 opacity-0 h-full w-full cursor-pointer",
           disabled && "cursor-not-allowed"
         )}
-        type={withTime ? "datetime-local" : "date"}
+        type={calenderView}
         onChange={handleOnChange}
         onClick={handleClick}
       />
