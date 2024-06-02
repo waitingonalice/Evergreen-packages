@@ -22,7 +22,7 @@ function NativeDatePicker({
   calenderView = "date",
 }: NativeDatePickerProps) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const dateDisplay = formatTime(calenderView === "datetime-local", value);
+  const dateDisplay = formatTime(calenderView, value);
   const [focus, setFocus] = useState(false);
 
   useOutsideClick(inputRef, () => setFocus(false));
