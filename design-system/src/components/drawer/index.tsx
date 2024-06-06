@@ -93,7 +93,7 @@ const SheetHeader = ({ className, children }: SheetProps) => (
 const SheetFooter = ({ className, children }: SheetProps) => (
   <div
     className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
+      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-4",
       className
     )}
   >
@@ -102,13 +102,13 @@ const SheetFooter = ({ className, children }: SheetProps) => (
 );
 
 const SheetTitle = ({ children }: { children: React.ReactNode }) => (
-  <Text type="subhead-2" className="text-secondary-5">
+  <Text type="subhead-2-bold" className="text-secondary-5">
     {children}
   </Text>
 );
 
 const SheetDescription = ({ children }: { children: React.ReactNode }) => (
-  <Text type="caption" className="text-gray-3">
+  <Text type="body" className="text-secondary-4">
     {children}
   </Text>
 );
