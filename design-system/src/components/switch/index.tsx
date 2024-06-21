@@ -6,7 +6,7 @@ import { Label, LabelProps } from "../label";
 interface SwitchProps
   extends React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>,
     LabelProps {
-  size: "default" | "small";
+  size?: "default" | "small";
 }
 const Switch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
