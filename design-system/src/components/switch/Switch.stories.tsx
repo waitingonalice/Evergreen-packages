@@ -30,3 +30,12 @@ Disabled.args = { disabled: true };
 
 export const DisabledChecked = Template.bind({});
 DisabledChecked.args = { disabled: true, defaultChecked: true };
+
+export const WithLabel = Template.bind({});
+WithLabel.args = {
+  id: "switch",
+  disabled: true,
+  defaultChecked: true,
+  label: "Label",
+  subLabel: "Sublabel",
+};
