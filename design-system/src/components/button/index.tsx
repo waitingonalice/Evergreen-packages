@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import clsx from "clsx";
+import { cn } from "../../utils";
 
 export interface ButtonProps {
   className?: string;
@@ -31,21 +31,21 @@ export const Button = ({
   const baseStyle =
     "whitespace-nowrap transition-all duration-100 disabled:cursor-not-allowed disabled:opacity-30 text-[14px] font-medium tracking-[0.0125em] flex justify-center items-center gap-x-1";
 
-  const baseStyleButton = clsx(
+  const baseStyleButton = cn(
     "first-letter:focus:outline-none shadow-sm rounded-md active:enabled:ring-2 active:enabled:ring-offset-1",
     size === "small" ? "px-2 py-1" : "px-4 py-2"
   );
 
   const variantMapper = {
-    primary: clsx(
+    primary: cn(
       "shadow-primary-light/40 bg-primary-main hover:enabled:bg-primary-light text-secondary-1 active:enabled:bg-primary-dark active:enabled:ring-primary-dark",
       baseStyleButton
     ),
-    secondary: clsx(
+    secondary: cn(
       "shadow-secondary-1/40 bg-secondary-1 text-primary-main hover:bg-secondary-2 active:enabled:ring-primary-light",
       baseStyleButton
     ),
-    error: clsx(
+    error: cn(
       "shadow-error-main/40 bg-error-dark text-secondary-1 hover:enabled:bg-error-dark/90 active:enabled:bg-error-main active:enabled:ring-error-main",
       baseStyleButton
     ),
@@ -67,7 +67,7 @@ export const Button = ({
     <button
       id={id}
       type={type}
-      className={clsx(baseStyle, variantMapper[variant], className)}
+      className={cn(baseStyle, variantMapper[variant], className)}
       disabled={disabled}
       onClick={handleClick}
       value={value}

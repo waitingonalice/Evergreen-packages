@@ -5,11 +5,12 @@ export interface AnimateProps {
   show: boolean;
   timer?: number;
   children: React.ReactNode;
+  className?: string;
 }
 
-function Animate({ children, show, timer = 100 }: AnimateProps) {
+function Animate({ children, show, className, timer = 100 }: AnimateProps) {
   const render = useDelayUnmount(show, timer);
-  return render && children;
+  return render && <div className={className}>{children}</div>;
 }
 
 export { Animate };
