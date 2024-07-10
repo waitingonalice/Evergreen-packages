@@ -6,10 +6,17 @@ export interface AnimateProps {
   timer?: number;
   children: React.ReactNode;
   className?: string;
+  mountDelay?: boolean;
 }
 
-function Animate({ children, show, className, timer = 100 }: AnimateProps) {
-  const render = useDelayUnmount(show, timer);
+function Animate({
+  children,
+  show,
+  className,
+  mountDelay,
+  timer = 100,
+}: AnimateProps) {
+  const render = useDelayUnmount(show, timer, mountDelay);
   return render && <div className={className}>{children}</div>;
 }
 
