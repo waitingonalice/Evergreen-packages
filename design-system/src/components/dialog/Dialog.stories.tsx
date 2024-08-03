@@ -1,6 +1,7 @@
 import { Meta } from "@storybook/react";
 import React, { useState } from "react";
 import { Button } from "../button";
+import { FormInput } from "../form";
 import { Dialog } from ".";
 
 export default {
@@ -34,7 +35,12 @@ export const TriggerDialog = () => {
           </>
         }
       >
-        test
+        <FormInput
+          value="test"
+          onChange={() => {
+            console.log("test");
+          }}
+        />
       </Dialog>
     </>
   );

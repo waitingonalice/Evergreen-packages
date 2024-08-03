@@ -79,7 +79,7 @@ export const Input = forwardRef((props: InputProps, ref: React.Ref<any>) => {
       className={cn(
         "flex items-center w-full justify-between",
         "rounded-md shadow-sm ring-primary-dark border border-gray-3 transition-all duration-100",
-        isFocused && "ring-2 ring-offset-2",
+        isFocused && "ring-2 ring-offset-1",
         showError && "ring-error-main border-error-main"
       )}
     >

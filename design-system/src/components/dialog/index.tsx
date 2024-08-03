@@ -20,6 +20,7 @@ interface DialogContentProps
   onClose?: () => void;
   disableInteractOutside?: boolean;
   withOverlay?: boolean;
+  size?: "sm" | "md" | "lg" | "xl";
 }
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
@@ -32,6 +33,7 @@ const DialogContent = React.forwardRef<
       disableInteractOutside,
       onClose,
       withOverlay,
+      size,
       ...props
     },
     ref
@@ -43,6 +45,13 @@ const DialogContent = React.forwardRef<
       }
       onClose?.();
     };
+
+    const sizeMap = {
+      sm: "sm:w-[480px]",
+      md: "sm:max-w-[640px]",
+      lg: "sm:max-w-[800px]",
+      xl: "sm:max-w-[960px]",
+    };
     return (
       <DialogPortal>
         {withOverlay && <DialogOverlay />}
@@ -51,8 +60,9 @@ const DialogContent = React.forwardRef<
           ref={ref}
           className={cn(
             "fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4 border p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg bg-white",
-            "w-full max-h-screen h-full sm:h-fit sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl overflow-auto",
-            className
+            "max-h-screen h-full sm:h-fit overflow-auto",
+            className,
+            size && sizeMap[size]
           )}
           onInteractOutside={handleClose}
         >
@@ -105,8 +115,9 @@ export const Dialog = ({
   className,
   open = false,
   isModal = false,
-  withOverlay = false,
+  withOverlay = true,
   onClose,
+  size = "sm",
 }: DialogProps) => {
   const footerBaseStyle = "space-x-2 flex w-full";
   return (
@@ -116,6 +127,7 @@ export const Dialog = ({
         onClose={onClose}
         disableInteractOutside={disableInteractOutside}
         withOverlay={withOverlay}
+        size={size}
       >
         <div className="flex flex-col space-y-4">
           <Text type="subhead-2-bold" className="text-typography-1">
