@@ -31,7 +31,7 @@ export const Input = forwardRef((props: InputProps, ref: React.Ref<any>) => {
     disabled,
     isPassword,
     prefixIcon,
-    size = "default",
+    size = "small",
     showError,
     autoComplete,
     as = "input",
