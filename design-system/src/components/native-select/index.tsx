@@ -1,10 +1,11 @@
 import { Ref, forwardRef } from "react";
+import { PrimitiveType } from "../../types";
 import { cn } from "../../utils";
 import { ErrorProps } from "../error";
 
 export interface BaseOption {
   label: string;
-  value: string;
+  value: PrimitiveType;
 }
 
 export interface NativeSelectProps extends ErrorProps {
@@ -14,7 +15,7 @@ export interface NativeSelectProps extends ErrorProps {
   placeholder?: string;
   onChange?: (value: string) => void;
   className?: string;
-  value?: string | number;
+  value?: PrimitiveType;
   size?: "small" | "default";
   multiple?: boolean;
 }
