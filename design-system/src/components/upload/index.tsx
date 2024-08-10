@@ -1,12 +1,9 @@
 import { useRef, useState } from "react";
 import { Upload as UploadIcon } from "lucide-react";
 import { cn } from "../../utils";
-import { ErrorProps } from "../error";
-import { FormWrapper } from "../form";
-import { LabelProps } from "../label";
 import { Text } from "../text";
 
-interface UploadProps extends ErrorProps, LabelProps {
+export interface UploadProps {
   onChange: (file: FileList) => void;
   multiple?: boolean;
   text?: string;
@@ -20,7 +17,6 @@ function Upload({
   multiple,
   text = "Click or drag file to upload",
   subtext,
-  ...props
 }: UploadProps) {
   const [hover, setHover] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -51,39 +47,37 @@ function Upload({
   };
 
   return (
-    <FormWrapper {...props}>
-      <div
-        tabIndex={0}
-        role="button"
-        onMouseEnter={handleMouseOver}
-        onMouseLeave={handleMouseOver}
-        onDragOver={handleDragOver}
-        onDragLeave={handleMouseOver}
-        onDrop={handleOnDrop}
-        onClick={handleOnClick}
-        onKeyDown={handleOnClick}
-        className={cn(
-          "rounded-md border-dashed border bg-secondary-1 border-secondary-4 p-10 flex flex-col items-center justify-center gap-y-4",
-          hover && "border-secondary-5"
-        )}
-      >
-        <Text type="body">{text}</Text>
-        <UploadIcon className="w-6 h-auto text-secondary-5" />
-        {subtext && (
-          <Text className="text-secondary-4" type="caption">
-            {subtext}
-          </Text>
-        )}
-        <input
-          id={id}
-          onChange={handleOnChange}
-          ref={inputRef}
-          type="file"
-          multiple={multiple}
-          className="hidden"
-        />
-      </div>
-    </FormWrapper>
+    <div
+      tabIndex={0}
+      role="button"
+      onMouseEnter={handleMouseOver}
+      onMouseLeave={handleMouseOver}
+      onDragOver={handleDragOver}
+      onDragLeave={handleMouseOver}
+      onDrop={handleOnDrop}
+      onClick={handleOnClick}
+      onKeyDown={handleOnClick}
+      className={cn(
+        "rounded-md border-dashed border bg-secondary-1 border-secondary-4 p-10 flex flex-col items-center justify-center gap-y-4",
+        hover && "border-secondary-5"
+      )}
+    >
+      <Text type="body">{text}</Text>
+      <UploadIcon className="w-6 h-auto text-secondary-5" />
+      {subtext && (
+        <Text className="text-secondary-4" type="caption">
+          {subtext}
+        </Text>
+      )}
+      <input
+        id={id}
+        onChange={handleOnChange}
+        ref={inputRef}
+        type="file"
+        multiple={multiple}
+        className="hidden"
+      />
+    </div>
   );
 }
 

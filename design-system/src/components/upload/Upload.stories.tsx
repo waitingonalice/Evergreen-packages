@@ -1,5 +1,6 @@
 import { Meta } from "@storybook/react";
 import React, { useState } from "react";
+import { FormUpload } from "../form";
 import { Upload } from ".";
 
 const meta: Meta = {
@@ -18,7 +19,7 @@ export const Default = () => {
 
   return (
     <>
-      <Upload
+      <FormUpload
         onChange={handleFileChange}
         multiple
         label="Label"

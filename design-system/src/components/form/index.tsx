@@ -2,6 +2,7 @@ import { forwardRef } from "react";
 import { cn } from "../../utils";
 import { ErrorMessage, ErrorProps } from "../error";
 import { Label, LabelProps } from "../label";
+import { Upload, UploadProps } from "../upload";
 import {
   Input,
   InputProps,
@@ -93,4 +94,22 @@ const FormNativeDatePicker = (props: FormDatePickerProps) => {
   );
 };
 
-export { FormInput, FormNativeSelect, FormNativeDatePicker, FormWrapper, Form };
+export type FormUploadProps = FormComponentProps & UploadProps;
+const FormUpload = (props: FormUploadProps) => {
+  const { className, ...rest } = props;
+
+  return (
+    <FormWrapper {...rest} className={className}>
+      <Upload {...rest} />
+    </FormWrapper>
+  );
+};
+
+export {
+  FormInput,
+  FormNativeSelect,
+  FormNativeDatePicker,
+  FormUpload,
+  FormWrapper,
+  Form,
+};
