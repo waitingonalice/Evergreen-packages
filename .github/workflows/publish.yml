@@ -10,21 +10,27 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
       - name: Set up Nodejs
         uses: actions/setup-node@v3
         with:
           node-version: "18.x"
           registry-url: "https://registry.npmjs.org"
+
       - name: Configure git user
         run: |
           git config --global user.name "waitingonalice"
           git config --global user.email "fcsie55@gmail.com"
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile --production=false
-      - name: Version bump patch
-        run: yarn version:patch
+
       - name: Build
         run: yarn build:all
+
+      - name: Version bump patch
+        run: yarn version:patch
+
       - name: Publish
         run: yarn publish:all
         env:
