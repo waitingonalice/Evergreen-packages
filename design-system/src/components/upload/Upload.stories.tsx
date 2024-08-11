@@ -33,3 +33,19 @@ export const Default = () => {
     </>
   );
 };
+
+export const Disabled = () => {
+  const [file, setFile] = useState<File[]>([]);
+
+  const handleFileChange = (file: FileList) => {
+    if (file.length === 0) return;
+    setFile((prev) => [...prev, ...file]);
+  };
+
+  return (
+    <>
+      <FormUpload onChange={handleFileChange} multiple disabled />
+      {file && file.map((f) => <p key={f.name}>{f.name}</p>)}
+    </>
+  );
+};
