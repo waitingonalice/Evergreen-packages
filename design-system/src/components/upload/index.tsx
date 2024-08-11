@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { Upload as UploadIcon } from "lucide-react";
+import { FileContentTypeEnum } from "../../constants/enums";
 import { cn } from "../../utils";
 import { Button } from "../button";
 import { Text } from "../text";
@@ -11,6 +12,7 @@ export interface UploadProps {
   subtext?: string;
   id?: string;
   disabled?: boolean;
+  supportedFileTypes?: FileContentTypeEnum[];
 }
 
 function Upload({
@@ -20,6 +22,7 @@ function Upload({
   text = "Click or drag file to this area to upload.",
   subtext,
   disabled,
+  supportedFileTypes,
 }: UploadProps) {
   const [hover, setHover] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -76,6 +79,7 @@ function Upload({
         </Text>
       )}
       <input
+        accept={supportedFileTypes?.toString()}
         id={id}
         onChange={handleOnChange}
         ref={inputRef}

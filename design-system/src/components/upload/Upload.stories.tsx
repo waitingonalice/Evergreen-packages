@@ -1,5 +1,6 @@
 import { Meta } from "@storybook/react";
 import React, { useState } from "react";
+import { FileContentTypeEnum } from "../../constants/enums";
 import { FormUpload } from "../form";
 import { Upload } from ".";
 
@@ -28,6 +29,7 @@ export const Default = () => {
         errorMessage="Test ErrorMessage"
         subLabel="Sublabel"
         subtext="Subtext"
+        supportedFileTypes={[FileContentTypeEnum.JPEG, FileContentTypeEnum.PNG]}
       />
       {file && file.map((f) => <p key={f.name}>{f.name}</p>)}
     </>
