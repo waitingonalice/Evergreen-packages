@@ -59,6 +59,7 @@
     ]
   },
   "workspaces": [
-    "design-system"
+    "design-system",
+    "shared"
   ]
 }
