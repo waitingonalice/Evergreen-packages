@@ -19,20 +19,24 @@ const buildPackageJson = () => {
   fs.writeFileSync(packageJsonBuildPath, JSON.stringify(build));
 };
 
-// const removeUnwantedBundle = () => {
-//   const options = {
-//     recursive: true
-//   }
+const removeUnwantedBundle = async () => {
 
-//   const handleError = (err) => {
-//     if (err) {
-//       console.error(err)
-//       process.exit(1)
-//     }
-//   }
-//   fs.rm(path.join(buildPath, "./constants"), options, handleError)
-//   fs.rm(path.join(buildPath, "./utils"), options, handleError)
-// }
+  const removeUnwantedFileList = [
+    './rollup.config.d.ts'
+  ]
+
+  const handleError = (err) => {
+    if (err) {
+      console.error(err)
+      process.exit(1)
+    }
+  }
+
+  removeUnwantedFileList.forEach((file) => {
+    fs.unlink(path.join(buildPath, file), handleError)
+  })
+  
+}
 
 const extractReadMe = () => {
   copyFile(path.join(packagePath, "./README.md"), path.join(buildPath, "./README.md"),
@@ -46,7 +50,7 @@ const extractReadMe = () => {
 
 function run() {
   buildPackageJson();
-  // removeUnwantedBundle();
+  removeUnwantedBundle();
   extractReadMe();
 }
 

@@ -1,6 +1,6 @@
+import { FileContentTypeEnum } from "@waitingonalice/utilities";
 import { useRef, useState } from "react";
 import { Upload as UploadIcon } from "lucide-react";
-import { FileContentTypeEnum } from "../../constants/enums";
 import { cn } from "../../utils";
 import { Button } from "../button";
 import { Text } from "../text";
