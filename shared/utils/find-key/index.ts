@@ -1,4 +1,5 @@
 /** Recursive function that finds a key and returns its respective value in a deeply nested object  */
+
 export const findKey = (
   targetKey: string,
   object: Record<string, any>
