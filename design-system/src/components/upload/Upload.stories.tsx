@@ -1,6 +1,6 @@
 import { Meta } from "@storybook/react";
+import { FileContentTypeEnum } from "@waitingonalice/utilities";
 import React, { useState } from "react";
-import { FileContentTypeEnum } from "../../constants/enums";
 import { FormUpload } from "../form";
 import { Upload } from ".";
 
