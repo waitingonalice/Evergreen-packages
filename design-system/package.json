@@ -1,6 +1,6 @@
 {
   "name": "@waitingonalice/design-system",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "author": "waitingonalice",
   "description": "A design system that uses tailwindcss and react",
   "license": "MIT",
@@ -34,7 +34,7 @@
     "@radix-ui/react-slider": "^1.1.2",
     "@radix-ui/react-switch": "^1.0.3",
     "@tailwindcss/forms": "^0.5.7",
-    "@waitingonalice/utilities": "^1.2.1",
+    "@waitingonalice/utilities": "^1.2.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "dayjs": "^1.11.11",
