@@ -1,6 +1,6 @@
 {
   "name": "@waitingonalice/utilities",
-  "version": "1.3.1",
+  "version": "1.3.3",
   "description": "Shared JS package",
   "module": "build/index.js",
   "main": "build/index.cjs",
