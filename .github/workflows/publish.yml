@@ -28,10 +28,10 @@ jobs:
       - name: Build
         run: yarn build:all
 
-      - name: Version bump patch
-        run: yarn version:patch
-
       - name: Publish
         run: yarn publish:all
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Version bump patch
+        run: yarn version:patch
