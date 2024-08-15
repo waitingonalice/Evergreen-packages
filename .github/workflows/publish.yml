@@ -28,8 +28,8 @@ jobs:
       - name: Build
         run: yarn build:all
 
-      - name: Version bump patch
-        run: yarn version:patch
+      # - name: Version bump patch
+      #   run: yarn version:patch
 
       - name: Publish
         run: yarn publish:all
