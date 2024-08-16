@@ -1,12 +1,8 @@
+import { PrimitiveType } from "@waitingonalice/utilities";
 import { Ref, forwardRef } from "react";
-import { PrimitiveType } from "../../types";
+import { BaseOption } from "../../types";
 import { cn } from "../../utils";
 import { ErrorProps } from "../error";
-
-export interface BaseOption {
-  label: string;
-  value: PrimitiveType;
-}
 
 export interface NativeSelectProps extends ErrorProps {
   id?: string;

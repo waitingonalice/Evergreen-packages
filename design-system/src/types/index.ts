@@ -1,5 +1,10 @@
+import { PrimitiveType } from "@waitingonalice/utilities";
+
 export interface BaseProps {
   className?: string;
 }
 
-export type PrimitiveType = string | number;
+export interface BaseOption {
+  label: string;
+  value: PrimitiveType;
+}

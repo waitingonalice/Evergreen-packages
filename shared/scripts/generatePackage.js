@@ -1,4 +1,4 @@
-import fs, {copyFile} from "fs";
+import fs from "fs";
 import path from "path";
 import packageJSON from "../package.json" assert { type: "json" };
 
@@ -19,7 +19,7 @@ const buildPackageJson = () => {
   fs.writeFileSync(packageJsonBuildPath, JSON.stringify(build));
 };
 
-const removeUnwantedBundle = async () => {
+const removeUnwantedBundle = () => {
 
   const removeUnwantedFileList = [
     './rollup.config.d.ts'
@@ -35,11 +35,10 @@ const removeUnwantedBundle = async () => {
   removeUnwantedFileList.forEach((file) => {
     fs.unlink(path.join(buildPath, file), handleError)
   })
-  
 }
 
 const extractReadMe = () => {
-  copyFile(path.join(packagePath, "./README.md"), path.join(buildPath, "./README.md"),
+  fs.copyFile(path.join(packagePath, "./README.md"), path.join(buildPath, "./README.md"),
     (err) => {
       if (err) {
         console.error(err);
