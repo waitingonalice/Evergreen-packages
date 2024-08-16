@@ -21,3 +21,4 @@ export * from "./radio";
 export * from "./datepicker";
 export * from "./table";
 export * from "./pagination";
+export * from "./dropdown";
